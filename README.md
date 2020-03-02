@@ -1,8 +1,7 @@
-PROJEKT: SKIVBOLAGET
+SKIVBOLAGET: Project Guidelines
 
-Formatting: 
-
-We follow Google JavaScript Style Guide except for indentation, we do as Visual Studio Code, Spaces: 4.
+Formatting:
+We follow Google JavaScript Style Guide except for indentation, we do as Visual Studio Code, Spaces: 4 (in VSC, Menu Code > Settings > Editor:Tab Size to 4).
 
 https://google.github.io/styleguide/jsguide.html
 
