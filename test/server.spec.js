@@ -9,8 +9,8 @@ describe('Router tests', () => { // Huvudrubrik till våra test
         server = app.listen(port, () => console.log('                  >>>>>>>>>>>> Testing server up')) // servern körs igång
     })
 
-    it('Should respond to /library', (done) => {       // Ett test för att se om servern svarar på get /
-        supertest(server).get('/library').expect(200, done());   // vi testar om vi får svar på /
+    it('Should respond to /', (done) => {       // Ett test för att se om servern svarar på get /
+        supertest(server).get('/').expect(200, done());   // vi testar om vi får svar på /
     })
 
     it('Should respond to /album', (done) => {
@@ -19,10 +19,6 @@ describe('Router tests', () => { // Huvudrubrik till våra test
 
     it('Should respond to post /add-album', (done) => {
         supertest(server).post('/add-album').expect(302, done)
-    })
-
-    it('Should respond to /', (done) => {
-        supertest(server).get('/').expect(200, done())
     })
 
     it('Should respond to get /add-album', (done) => {

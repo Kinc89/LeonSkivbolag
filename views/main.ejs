@@ -9,8 +9,22 @@
 </head>
 
 <body>
-    <h1>Welcome to Skivbolaget: library</h1>
-    <a href="/library">Go to Skivbolaget library</a><br />
-    <a href="/add-album">Go to add album</a>
+    <!-- example, only to test page -->
+    <h1>Skivbolaget</h1>
+    <a href="/add-album">Go to add album</a>    
+    <ul>
+        <% albumsList.forEach(album => { %>
+            <li class="albums-list">
+                <div>
+                <%= album.name %><br />
+                <%= album.artist %><br />
+                <%= album.price %><br />
+                <%= album.description %><br />
+                <div class="album-img-container"><img src="<%= album.imgUrl %>" alt="<%= album.description %>" height="250px"></div>
+                </div>
+            </li> 
+        <% }) %>
+    </ul>
+    <!-- example ends -->
 </body>
 </html>

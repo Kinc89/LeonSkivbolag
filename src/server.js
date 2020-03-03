@@ -7,13 +7,11 @@ const album = require('../model/album');
 const ROUTE = {
     root: '/',
     album: '/album',
-    library: '/library',
     addAlbum: '/add-album'
 };
 
 const VIEW = {
     root: 'main',
-    library: 'library',
     album: 'album',
     addAlbum: 'add-album'
 };
@@ -32,12 +30,13 @@ app.use(express.urlencoded({ extended: true }));
 app.set('view engine', 'ejs');
 
 // ROUTES
-app.get(ROUTE.library, async (req, res) => {
-    const albumsList = await album.find();
-    res.status(200).render(VIEW.library, { albumsList });
-})
 
-app.get(ROUTE.album, (req, res) => {
+app.get(ROUTE.root, async (req, res) => {
+    const albumsList = await album.find();
+    res.status(200).render(VIEW.root, { albumsList });
+});
+
+app.get(ROUTE.album, async (req, res) => {
     res.status(200).render(VIEW.album, {});
 })
 
@@ -55,11 +54,7 @@ app.post(ROUTE.addAlbum, (req, res) => {
         imgUrl: req.body.imgUrl
     }).save(); // och spara till databasen
 
-    res.status(200).redirect(ROUTE.library);
-})
-
-app.get(ROUTE.root, (req, res) => {
-    res.status(200).render(VIEW.root, {});
+    res.status(200).redirect(ROUTE.root);
 })
 
 module.exports = { app, port, express };
