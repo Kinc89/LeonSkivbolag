@@ -1,4 +1,4 @@
-# SKIVBOLAGET: Project Guidelines
+# Skivbolaget Project Guidelines
 
 ## Formatting:
 We follow **Google JavaScript Style Guide** except for indentation, we do as Visual Studio Code, Spaces: 4 (in VSC, Menu Code > Settings > Editor:Tab Size to 4).
