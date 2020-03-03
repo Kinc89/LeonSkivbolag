@@ -4,7 +4,6 @@ const mongoose = require('mongoose');
 const schema = new mongoose.Schema({
     name: String,
     artist: String,
-    titles: [],
     price: Number,
     description: String,
     imgUrl: String
