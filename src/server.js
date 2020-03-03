@@ -32,6 +32,7 @@ app.set('view engine', 'ejs');
 // ROUTES
 
 app.get(ROUTE.root, async (req, res) => {
+
     const albumsList = await album.find();
     res.status(200).render(VIEW.root, { albumsList });
 });
