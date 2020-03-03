@@ -1,0 +1,36 @@
+.header {
+    display: grid;
+    width: 100%;
+    /* grid-template-columns: 1fr 5fr 1fr 1fr; */
+    grid-template-columns: 100px 100px 100px 100px;
+    text-align: center;
+    grid-template-rows: 13%;
+  }
+
+  .menu {
+    grid-column-start: 0;
+    grid-column-end: 1;
+  }
+
+  .logo{
+    grid-column-start: 1;
+    grid-column-end: 2;
+  }
+
+  .user{
+    grid-column-start: 2;
+    grid-column-end: 3;
+  }
+
+  .shoppingCart{
+    grid-column-start: 3;
+    grid-column-end: 4;
+  }
+
+  .container {
+    display: grid;
+    width: 100%;
+    grid-template-columns: 100%;
+    grid-gap: 10px;
+    grid-template-rows: auto;
+  }
