@@ -18,7 +18,7 @@ const VIEW = {
 
 app.use(sassMiddleware({ // tell sassMiddleware where src file and dest directory is
     src: 'sass',
-    dest: 'public/css',
+    dest: 'public',
     // debug: true, // för att skriva ut data till konsollen
     outputStyle: 'compressed'
 }));
