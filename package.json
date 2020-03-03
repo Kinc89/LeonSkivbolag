@@ -6,7 +6,7 @@
   "scripts": {
     "test": "mocha",
     "start": "nodemon index.js",
-    "sass": "node-sass --watch sass -o public"
+    "sass": "node-sass --watch sass -o public/css"
   },
   "keywords": [
     "label",
