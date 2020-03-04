@@ -3,6 +3,7 @@ const sassMiddleware = require('node-sass-middleware');
 const app = express();
 const port = 4000;
 const album = require('../model/album');
+const getLastFmData = require('./getLastFmData');
 
 const ROUTE = {
     root: '/',
@@ -32,8 +33,11 @@ app.set('view engine', 'ejs');
 // ROUTES
 
 app.get(ROUTE.root, async (req, res) => {
-    const albumsList = await album.find();
-    res.status(200).render(VIEW.root, { albumsList });
+    const album = await getLastFmData();
+    res.status(200).send(album);
+
+    // const albumsList = await album.find();
+    // res.status(200).render(VIEW.root, { albumsList });
 });
 
 app.get(ROUTE.album, async (req, res) => {
