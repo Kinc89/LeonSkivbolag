@@ -37,7 +37,6 @@ app.get(ROUTE.root, async (req, res) => {
     const data = await getLastFmData();
     console.log('data:')
     console.log(data);
-    console.log('json!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!')
     // res.status(200).end();
 
     // new album({
