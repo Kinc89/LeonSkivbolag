@@ -17,4 +17,23 @@ header {
 i{
   color:#e0e0e0;
 }
- 
+
+.item{
+  display:grid;
+  width:100%;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 4fr 1fr 1fr;
+  align-items: center;
+  text-align: center;
+  height: auto;
+  background-color: rgb(0, 0, 0);
+  color: white;
+}
+
+.image{
+    grid-column-start: 0;
+    grid-column-end: 1;
+    grid-row-start: 0;
+    grid-row-end: ;
+  }
+
