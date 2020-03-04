@@ -3,7 +3,7 @@ const sassMiddleware = require('node-sass-middleware');
 const app = express();
 const port = 4000;
 const album = require('../model/album');
-const getLastFmData = require('./getLastFmData');
+const getLastFmData = require('../src/getLastFmData');
 
 const ROUTE = {
     root: '/',
