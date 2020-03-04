@@ -33,6 +33,24 @@ app.set('view engine', 'ejs');
 
 app.get(ROUTE.root, async (req, res) => {
 
+    // var myHeaders = new Headers();
+    // myHeaders.append("Content-Type", "application/json");
+    // myHeaders.append("Authorization", "Bearer BQD-Gy5EwVOGa6K5kWUsTTbhiQZWqQUxt1Vd4nPMKa9tmOdTxhEt8eA-Nh0DodEHkxqrd42_aSdQvEbC3dsq0F8ilc5UT17Fh1s2-hW7ol_EhdI-1WpWOGIcwFholflyWux6NNbUnn3NRea87x2g8VLrKbLpc9w");
+    
+    const requestOptions = {
+      method: 'GET',
+      headers: {
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer BQD-Gy5EwVOGa6K5kWUsTTbhiQZWqQUxt1Vd4nPMKa9tmOdTxhEt8eA-Nh0DodEHkxqrd42_aSdQvEbC3dsq0F8ilc5UT17Fh1s2-hW7ol_EhdI-1WpWOGIcwFholflyWux6NNbUnn3NRea87x2g8VLrKbLpc9w'
+        },
+      body: '',
+      redirect: 'follow'
+    };
+    
+    const response = await fetch("https://api.spotify.com/v1/albums/0sNOF9WDwhWunNAHPD3Baj", requestOptions);
+    
+    console.log(response);
+
     const albumsList = await album.find();
     res.status(200).render(VIEW.root, { albumsList });
 });
