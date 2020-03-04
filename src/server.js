@@ -35,17 +35,17 @@ app.set('view engine', 'ejs');
 app.get(ROUTE.root, async (req, res) => {
     
     const data = await getLastFmData();
-
+    console.log('data:')
     console.log(data);
-
-    res.status(200).end();
+    console.log('json!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!')
+    // res.status(200).end();
 
     // new album({
     //     name: req.body.name,
     // }).save() // och spara till databasen
 
     // const albumsList = await album.find();
-    // res.status(200).render(VIEW.root, { album });
+    res.status(200).render(VIEW.root, { data });
 });
 
 app.get(ROUTE.album, async (req, res) => {
