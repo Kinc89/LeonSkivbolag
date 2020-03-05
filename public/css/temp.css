@@ -1,0 +1,96 @@
+body {
+  background-color: #0D0D0D;
+  color: #e0e0e0; }
+
+header {
+  display: grid;
+  width: 100%;
+  grid-template-columns: [menu] 1fr [logo] 5fr [user] 1fr [shoppingCart] 1fr;
+  align-items: center;
+  text-align: center;
+  height: 13%;
+  background-color: #2e2e2e; }
+  header #logo-small {
+    height: 50px;
+    width: auto; }
+  header i {
+    color: #e0e0e0; }
+
+.sortContainer {
+  display: flex;
+  font-size: 1.2em; }
+  .sortContainer .filter {
+    margin-left: auto;
+    display: flex; }
+  .sortContainer .sort {
+    justify-content: flex-end;
+    margin-left: 10px;
+    margin-right: 15px;
+    display: inline;
+    text-align: right; }
+
+.container .item {
+  display: grid;
+  width: 100%;
+  grid-template-columns: 15px repeat(12, 1fr) 15px;
+  grid-template-rows: repeat(15fr); }
+
+.container .image {
+  grid-column: 2 / 14;
+  grid-row: 1 / 2; }
+  .container .image img {
+    max-width: 100%; }
+
+.container .artist {
+  grid-column: 2 / 6;
+  grid-row: 13 / 14;
+  font-size: 1.8em; }
+
+.container .album {
+  grid-column: 8 / 14;
+  grid-row: 13 / 14;
+  text-align: right;
+  font-size: 1.8em;
+  color: white; }
+
+.container .year {
+  grid-column: 2 / 6;
+  grid-row: 14 / 15;
+  font-size: 1.4em; }
+
+.container .genre {
+  grid-column: 8 / 14;
+  grid-row: 14 / 15;
+  text-align: right;
+  font-size: 1.4em; }
+
+.albumContainer {
+  text-align: center;
+  width: 93%;
+  margin: auto;
+  /* todo all scss under denna kan t abort text-align och width */ }
+  .albumContainer .fullAlbum {
+    /* background: #18818C; */
+    border: 4px solid #18818C;
+    box-sizing: border-box;
+    border-radius: 6px; }
+  .albumContainer .price {
+    /* background: #18A026; */
+    border-radius: 5px;
+    border: 4px solid #18A026;
+    box-sizing: border-box;
+    border-radius: 6px; }
+  .albumContainer .curator {
+    border: 4px solid #0F5259;
+    box-sizing: border-box;
+    border-radius: 6px; }
+  .albumContainer .curatorsNote {
+    border: 1px solid #EEEEEE;
+    box-sizing: border-box; }
+  .albumContainer .aboutAlbum {
+    border: 4px solid #0F5259;
+    box-sizing: border-box;
+    border-radius: 6px; }
+  .albumContainer .albumInfo {
+    border: 1px solid #EEEEEE;
+    box-sizing: border-box; }

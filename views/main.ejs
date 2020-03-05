@@ -6,20 +6,76 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Skivbolaget</title>
     <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/temp.css">
+    <script src="https://kit.fontawesome.com/5fc0d582b6.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
     <!-- example, only to test page -->
     <h1>Skivbolaget</h1>
-    <a href="/add-album">Go to add album</a>    
-    <% albums.forEach((album) => { %>
-     
-     <div>
-        <p><%= album.name %></p>
-     <p><%= album.imgUrl %></p>
-     </div>
+    <a href="/add-album">Go to add album</a>
+    <!-- <% albums.forEach((album) => { %>
 
-    <% }) %>
+    <div>
+        <p><%= album.name %></p>
+        <p><%= album.imgUrl %></p>
+    </div>
+
+    <% }) %> -->
     <!-- example ends -->
+
+    <header>
+        <div id="menu collapse"><i class="fas fa-bars fa-lg"></i></div>
+        <div><img id="logo-small" src="temp-img/systemet.png" alt="logo"></div>
+        <div id="user"><i class="far fa-user fa-lg"></i></div>
+        <div id="shoppingcart"><i class="fas fa-compact-disc fa-lg"></i></div>
+    </header>
+    <div class="sortContainer">
+        <div class="filter">filter</div>
+        <div class="sort">sort</div>
+    </div>
+    <div class="container">
+
+        <div class="item">
+            <% albums.forEach((album) => { %>
+            <!-- 
+            <div>
+                <p><%= album.name %></p>
+                <p></p>
+            </div> -->
+
+
+            <div class="image"><img src="<%= album.imgUrl %>" alt=""></div>
+            <div class="artist"><%= album.artist %></div>
+            <div class="album"><%= album.name %></div>
+            <div class="year"><%= album.released %></div>
+            <div class="genre"><%= album.genre %></div>
+            <% }) %>
+        </div>
+        <div class="item">
+            <div class="image"><img src="http://via.placeholder.com/500/ffff00" alt=""></div>
+            <div class="artist">Artist</div>
+            <div class="album">Album</div>
+            <div class="year">Year</div>
+            <div class="genre">Genre</div>
+        </div>
+        <div class="item">
+            <div class="image"><img src="http://via.placeholder.com/500/ffffff" alt=""></div>
+            <div class="artist">Artist</div>
+            <div class="album">Album</div>
+            <div class="year">Year</div>
+            <div class="genre">Genre</div>
+        </div>
+        <div class="item">
+            <div class="image"><img src="http://via.placeholder.com/500/eeffee" alt=""></div>
+            <div class="artist">Artist</div>
+            <div class="album">Album</div>
+            <div class="year">Year</div>
+            <div class="genre">Genre</div>
+        </div>
+    </div>
 </body>
+
+</body>
+
 </html>
