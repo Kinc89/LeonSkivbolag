@@ -1,47 +1,74 @@
+@charset "UTF-8";
+body {
+  background-color: #0D0D0D;
+  color: #e0e0e0; }
+
 header {
+  display: grid;
+  width: 100%;
+  grid-template-columns: [menu] 1fr [logo] 5fr [user] 1fr [shoppingCart] 1fr;
+  align-items: center;
+  text-align: center;
+  height: 13%;
+  background-color: #2e2e2e; }
+  header #logo-small {
+    height: 50px;
+    width: auto; }
+  header i {
+    color: #e0e0e0; }
+
+.container {
+  grid-template-rows: 13 / 14; }
+  .container .item {
     display: grid;
     width: 100%;
-    height: 13%;
-    grid-template-columns: 1fr 5fr 1fr 1fr;
-    /* grid-template-columns: 50px 200px 50px 50px; */
-    text-align: center;
+    grid-template-columns: 15px repeat(12, 1fr) 15px;
+    grid-template-rows: repeat(15fr);
+    grid-column-start: 1 / 12;
+    grid-row-start: 0 / 11; }
+  .container .image {
+    grid-column-start: 1 / 13;
+    grid-template-rows: 0 / 12; }
+  .container .artist {
+    grid-column-start: 2 / 6; }
+  .container .album {
+    grid-column-start: 8 / 12;
+    grid-template-rows: 13 / 14; }
+  .container .year {
+    grid-column-start: 2 / 6;
+    grid-template-rows: 14 / 15; }
+  .container .genre {
+    grid-column-start: 8 / 12;
+    grid-template-rows: 14 / 15; }
 
-    /* grid-template-rows: 13%; */
-  }
-
-
-  .menu {
-    /* grid-column-start: 0;
-    grid-column-end: 1; */
-    grid-column: 1 / 2;
-    grid-row: 0 / 1 ;
-  }
-
-  .logo{
-    /* grid-column-start: 1;
-    grid-column-end: 2; */
-    grid-column: 2 / 5;
-    grid-row: 0 / 1 ;
-  }
-
-  .user{
-    /* grid-column-start: 2;
-    grid-column-end: 3; */
-    grid-column: 5 / 6;
-    grid-row: 0 / 1 ;
-  }
-
-  .shoppingCart{
-    /* grid-column-start: 3;
-    grid-column-end: 4; */
-    grid-column: 6 / 7;
-    grid-row: 0 / 1 ;
-  }
-
-  .container {
-    display: grid;
-    width: 100%;
-    grid-template-columns: 100%;
-    grid-gap: 10px;
-    grid-template-rows: auto;
-  }
+/* todo nästla .albumcontainer { under här } med scss */
+.albumContainer {
+  text-align: center;
+  width: 93%;
+  margin: auto;
+  /* todo all scss under denna kan t abort text-align och width */ }
+  .albumContainer .fullAlbum {
+    /* background: #18818C; */
+    border: 4px solid #18818C;
+    box-sizing: border-box;
+    border-radius: 6px; }
+  .albumContainer .price {
+    /* background: #18A026; */
+    border-radius: 5px;
+    border: 4px solid #18A026;
+    box-sizing: border-box;
+    border-radius: 6px; }
+  .albumContainer .curator {
+    border: 4px solid #0F5259;
+    box-sizing: border-box;
+    border-radius: 6px; }
+  .albumContainer .curatorsNote {
+    border: 1px solid #EEEEEE;
+    box-sizing: border-box; }
+  .albumContainer .aboutAlbum {
+    border: 4px solid #0F5259;
+    box-sizing: border-box;
+    border-radius: 6px; }
+  .albumContainer .albumInfo {
+    border: 1px solid #EEEEEE;
+    box-sizing: border-box; }
