@@ -17,29 +17,43 @@ header {
   header i {
     color: #e0e0e0; }
 
-.container {
-  grid-template-rows: 13 / 14; }
-  .container .item {
-    display: grid;
-    width: 100%;
-    grid-template-columns: 15px repeat(12, 1fr) 15px;
-    grid-template-rows: repeat(15fr);
-    grid-column-start: 1 / 12;
-    grid-row-start: 0 / 11; }
-  .container .image {
-    grid-column-start: 1 / 13;
-    grid-template-rows: 0 / 12; }
-  .container .artist {
-    grid-column-start: 2 / 6; }
-  .container .album {
-    grid-column-start: 8 / 12;
-    grid-template-rows: 13 / 14; }
-  .container .year {
-    grid-column-start: 2 / 6;
-    grid-template-rows: 14 / 15; }
-  .container .genre {
-    grid-column-start: 8 / 12;
-    grid-template-rows: 14 / 15; }
+.container .item {
+  display: grid;
+  width: 100%;
+  grid-template-columns: 15px repeat(12, 1fr) 15px;
+  grid-template-rows: repeat(15fr); }
+
+.container .image {
+  grid-column-start: 2;
+  grid-column-end: 14;
+  grid-row-start: 1;
+  grid-row-end: 12; }
+  .container .image img {
+    max-width: 100%; }
+
+.container .artist {
+  grid-column-start: 2;
+  grid-column-end: 6;
+  grid-row-start: 13;
+  grid-row-end: 14; }
+
+.container .album {
+  grid-column-start: 7;
+  grid-column-end: 14;
+  grid-row-start: 13;
+  grid-row-end: 14; }
+
+.container .year {
+  grid-column-start: 2;
+  grid-column-end: 6;
+  grid-row-start: 14;
+  grid-row-end: 15; }
+
+.container .genre {
+  grid-column-start: 7;
+  grid-column-end: 12;
+  grid-row-start: 14;
+  grid-row-end: 15; }
 
 /* todo nästla .albumcontainer { under här } med scss */
 .albumContainer {

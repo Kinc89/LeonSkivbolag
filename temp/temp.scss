@@ -26,28 +26,41 @@ header {
         width: 100%;
         grid-template-columns: 15px repeat(12, 1fr) 15px;
         grid-template-rows: repeat(15fr);
-        grid-column-start: 1 / 12;
-        grid-row-start: 0 / 11;
     }
     .image{
-        grid-column-start: 1 / 13;
-        grid-template-rows: 0 / 12;
+        grid-column-start: 2;
+        grid-column-end: 14;
+        grid-row-start: 1;
+        grid-row-end: 12;
+    img{
+      max-width: 100%;
+    }
     }
     .artist{
-        grid-column-start: 2 / 6;
-    }   grid-template-rows: 13 / 14;
+      grid-column-start: 2;
+      grid-column-end: 6;
+      grid-row-start: 13;
+      grid-row-end: 14;
+    }
     .album{
-        grid-column-start: 8 / 12;
-        grid-template-rows: 13 / 14;
+      grid-column-start: 7;
+      grid-column-end: 14;
+      grid-row-start: 13;
+      grid-row-end: 14;
     }
     .year {
-        grid-column-start: 2 / 6;
-        grid-template-rows: 14 / 15;
+      grid-column-start: 2;
+      grid-column-end: 6;
+      grid-row-start: 14;
+      grid-row-end: 15;
     }
     .genre {
-        grid-column-start: 8 / 12;
-        grid-template-rows: 14 / 15;
+      grid-column-start: 7;
+      grid-column-end: 12;
+      grid-row-start: 14;
+      grid-row-end: 15;
     }
+  }
     // .item{
     // display:grid;
     // width:100%;
@@ -100,7 +113,6 @@ header {
     // align-items: center;
     // text-align: center;
     // }
-}
    /* todo nästla .albumcontainer { under här } med scss */
 .albumContainer {
      text-align: center;
