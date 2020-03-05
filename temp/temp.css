@@ -1,72 +1,88 @@
+@charset "UTF-8";
+body {
+  background-color: #0D0D0D;
+  color: #e0e0e0; }
+
 header {
-    display: grid;
-    width: 100%;
-    grid-template-columns: [menu] 1fr [logo] 5fr [user] 1fr [shoppingCart] 1fr;
-    align-items: center;
-    text-align: center;
-    height: 13%;
-    background-color: rgb(46, 46, 46);
-  }
-
-
-
-  #logo-small{
+  display: grid;
+  width: 100%;
+  grid-template-columns: [menu] 1fr [logo] 5fr [user] 1fr [shoppingCart] 1fr;
+  align-items: center;
+  text-align: center;
+  height: 13%;
+  background-color: #2e2e2e; }
+  header #logo-small {
     height: 50px;
-    width: auto;
-  }
-i{
-  color:#e0e0e0;
-}
+    width: auto; }
+  header i {
+    color: #e0e0e0; }
 
-.item{
-  display:grid;
-  width:100%;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 4fr 1fr 1fr;
-  align-items: center;
-  text-align: center;
-  height: auto;
-  background-color: rgb(0, 0, 0);
-  color: white;
-}
+.container .item {
+  display: grid;
+  width: 100%;
+  grid-template-columns: 15px repeat(12, 1fr) 15px;
+  grid-template-rows: repeat(15fr); }
 
-.image{
-    grid-column-start: 1;
-    grid-column-end: 2;
-    grid-row-start: 1;
-    grid-row-end: 2;
-    margin: auto;
-    justify-content: center;
-  }
-.artist{
-  grid-column-start: 1;
-  grid-column-end: 2;
-  grid-row-start: 2;
-  grid-row-end: 3;
-  align-items: center;
-  text-align: center;
-}
-.album{
+.container .image {
   grid-column-start: 2;
-  grid-column-end: 3;
-  grid-row-start: 2;
-  grid-row-end: 3; 
-  align-items: center;
-  text-align: center;
-}
-.year{
-  grid-column-start: 1;
-  grid-column-end: 2;
-  grid-row-start: 3;
-  grid-row-end: 4;
-  align-items: center;
-  text-align: center;
-}
-.genre{
+  grid-column-end: 14;
+  grid-row-start: 1;
+  grid-row-end: 12; }
+  .container .image img {
+    max-width: 100%; }
+
+.container .artist {
   grid-column-start: 2;
-  grid-column-end: 3;
-  grid-row-start: 3;
-  grid-row-end: 4;
-  align-items: center;
+  grid-column-end: 6;
+  grid-row-start: 13;
+  grid-row-end: 14; }
+
+.container .album {
+  grid-column-start: 7;
+  grid-column-end: 14;
+  grid-row-start: 13;
+  grid-row-end: 14; }
+
+.container .year {
+  grid-column-start: 2;
+  grid-column-end: 6;
+  grid-row-start: 14;
+  grid-row-end: 15; }
+
+.container .genre {
+  grid-column-start: 7;
+  grid-column-end: 12;
+  grid-row-start: 14;
+  grid-row-end: 15; }
+
+/* todo nästla .albumcontainer { under här } med scss */
+.albumContainer {
   text-align: center;
-}
+  width: 93%;
+  margin: auto;
+  /* todo all scss under denna kan t abort text-align och width */ }
+  .albumContainer .fullAlbum {
+    /* background: #18818C; */
+    border: 4px solid #18818C;
+    box-sizing: border-box;
+    border-radius: 6px; }
+  .albumContainer .price {
+    /* background: #18A026; */
+    border-radius: 5px;
+    border: 4px solid #18A026;
+    box-sizing: border-box;
+    border-radius: 6px; }
+  .albumContainer .curator {
+    border: 4px solid #0F5259;
+    box-sizing: border-box;
+    border-radius: 6px; }
+  .albumContainer .curatorsNote {
+    border: 1px solid #EEEEEE;
+    box-sizing: border-box; }
+  .albumContainer .aboutAlbum {
+    border: 4px solid #0F5259;
+    box-sizing: border-box;
+    border-radius: 6px; }
+  .albumContainer .albumInfo {
+    border: 1px solid #EEEEEE;
+    box-sizing: border-box; }
