@@ -12,7 +12,14 @@
     <!-- example, only to test page -->
     <h1>Skivbolaget</h1>
     <a href="/add-album">Go to add album</a>    
-    
+    <% albums.forEach((album) => { %>
+     
+     <div>
+        <p><%= album.name %></p>
+     <p><%= album.imgUrl %></p>
+     </div>
+
+    <% }) %>
     <!-- example ends -->
 </body>
 </html>

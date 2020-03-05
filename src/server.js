@@ -2,7 +2,7 @@ const express = require('express');
 const sassMiddleware = require('node-sass-middleware');
 const app = express();
 const port = 4000;
-const album = require('../model/album');
+const Album = require('../model/album');
 const getLastFmData = require('../src/getLastFmData');
 
 const ROUTE = {
@@ -35,16 +35,19 @@ app.set('view engine', 'ejs');
 app.get(ROUTE.root, async (req, res) => {
     
     const data = await getLastFmData();
-    console.log('data:')
-    console.log(data);
-    // res.status(200).end();
 
-    // new album({
-    //     name: req.body.name,
-    // }).save() // och spara till databasen
+    await new Album({
+        name: data.album.name,
+        artist: data.album.artist,
+        released: data.album.wiki.published,
+        description: data.album.wiki.summary,
+        imgUrl: data.album.image[data.album.image.length-1]["#text"]
+    }).save();
 
-    // const albumsList = await album.find();
-    res.status(200).render(VIEW.root, { data });
+    const albums = await Album.find();
+    console.log(albums);
+
+    res.render(VIEW.root, { albums });
 });
 
 app.get(ROUTE.album, async (req, res) => {
