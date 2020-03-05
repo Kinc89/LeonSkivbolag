@@ -2,8 +2,8 @@ const express = require('express');
 const sassMiddleware = require('node-sass-middleware');
 const app = express();
 const port = 4000;
-const Album = require('../model/album');
-const getLastFmData = require('../src/getLastFmData');
+const Album = require('../../model/album');
+const getLastFmData = require('../functions/getLastFmData');
 
 const ROUTE = {
     root: '/',
@@ -59,14 +59,6 @@ app.get(ROUTE.addAlbum, async (req, res) => {
 })
 
 app.post(ROUTE.addAlbum, (req, res) => {
-    // spara ny album
-    new album({
-        name: req.body.name,
-        artist: req.body.artist,
-        price: req.body.price,
-        description: req.body.description,
-        imgUrl: req.body.imgUrl
-    }).save(); // och spara till databasen
 
     res.status(200).redirect(ROUTE.root);
 })
