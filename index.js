@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const { app, port } = require('./src/server');
+const { app, port } = require('./src/routes/server');
 const dbConfig = require('./config/config');
 
 // Start servern
