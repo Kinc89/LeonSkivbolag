@@ -23,12 +23,14 @@ app.set('view engine', 'ejs');
 
 // routes variables
 const mainRoute = require("./src/routes/mainRoute");
+const adminRoute = require("./src/routes/adminRoute");
 
 // routes use
 app.use(mainRoute);
+app.use(adminRoute);
 
 // Start servern
-const dbOptions = { useUnifiedTopology: true, useNewUrlParser: true };
+const dbOptions = { useUnifiedTopology: true, useNewUrlParser: true, useCreateIndex: true };
 mongoose.connect(dbConfig.databaseURL, dbOptions).then(() => {
     app.listen(port, () => console.log(`App listening on port ${port}! http://localhost:4000`))
 });

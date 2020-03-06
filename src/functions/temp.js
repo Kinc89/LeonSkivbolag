@@ -1,0 +1,1 @@
+const url = "http://ws.audioscrobbler.com/2.0/?method=album.getInfo&artist=Lady%20Gaga&api_key=a9bd98edbf62437e2542a87294e156da&format=json&album=Stupid%20Love";

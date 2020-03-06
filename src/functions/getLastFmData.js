@@ -1,13 +1,28 @@
 const fetch = require('node-fetch');
 
-async function getLastFmData () {
+async function getLastFmData (artist, album) {
+
+
+    console.log(artist);
+    console.log(album);
+
+    const artistDecoded = decodeURI(artist);
+    const albumDecoded = decodeURI(album);    
+
+    const url = "http://ws.audioscrobbler.com/2.0/?method=album.getinfo&api_key=a9bd98edbf62437e2542a87294e156da&artist=" +
+        artistDecoded +
+        "&album=" +
+        albumDecoded +
+        "&format=json";
+
+    console.log(url);
 
     const requestOptions = {
         method: 'GET',
         redirect: 'follow'
     };
 
-    return await fetch("http://ws.audioscrobbler.com/2.0/?method=album.getinfo&api_key=a9bd98edbf62437e2542a87294e156da&artist=Cher&album=Believe&format=json", requestOptions)
+    return await fetch(url, requestOptions)
         .then(res => res.json())
         .catch(error => console.log('error', error));
 }
