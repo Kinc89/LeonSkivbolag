@@ -3,9 +3,6 @@ const fetch = require('node-fetch');
 async function getLastFmData (artist, album) {
 
 
-    console.log(artist);
-    console.log(album);
-
     const artistDecoded = decodeURI(artist);
     const albumDecoded = decodeURI(album);    
 

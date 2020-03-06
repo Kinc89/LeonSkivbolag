@@ -23,44 +23,15 @@
         <div class="sort">sort</div>
     </div>
     <div class="container">
-
+        <% albums.forEach((album) => { %>
         <div class="item">
-            <% albums.forEach((album) => { %>
-            <!-- 
-            <div>
-                <p><%= album.name %></p>
-                <p></p>
-            </div> -->
-
-
             <div class="image"><img src="<%= album.imgUrl %>" alt=""></div>
             <div class="artist"><%= album.artist %></div>
             <div class="album"><%= album.name %></div>
             <div class="year"><%= album.released %></div>
             <div class="genre"><%= album.genre %></div>
-            <% }) %>
         </div>
-        <div class="item">
-            <div class="image"><img src="http://via.placeholder.com/500/ffff00" alt=""></div>
-            <div class="artist">Artist</div>
-            <div class="album">Album</div>
-            <div class="year">Year</div>
-            <div class="genre">Genre</div>
-        </div>
-        <div class="item">
-            <div class="image"><img src="http://via.placeholder.com/500/ffffff" alt=""></div>
-            <div class="artist">Artist</div>
-            <div class="album">Album</div>
-            <div class="year">Year</div>
-            <div class="genre">Genre</div>
-        </div>
-        <div class="item">
-            <div class="image"><img src="http://via.placeholder.com/500/eeffee" alt=""></div>
-            <div class="artist">Artist</div>
-            <div class="album">Album</div>
-            <div class="year">Year</div>
-            <div class="genre">Genre</div>
-        </div>
+        <% }) %>
     </div>
 </body>
 
