@@ -14,7 +14,7 @@
     
     <header>
         <div id="menu collapse"><i class="fas fa-bars fa-lg"></i></div>
-        <div><img id="logo-small" src="temp-img/systemet.png" alt="Skivbolaget logo"></div>
+        <div id="logo-container"><img id="logo-small" src="/img/logo.png" alt="Skivbolaget logo"></div>
         <div id="user"><i class="far fa-user fa-lg"></i></div>
         <div id="shoppingcart"><i class="fas fa-compact-disc fa-lg"></i></div>
     </header>
@@ -25,7 +25,7 @@
     <div class="container">
         <% albums.forEach((album) => { %>
         <div class="item">
-            <div class="image"><img src="<%= album.imgUrl %>" alt=""></div>
+            <div class="image"><img src="<%= album.imgUrl %>" alt="Image of '<%= album.name %>' by <%= album.artist %>"></div>
             <div class="artist"><%= album.artist %></div>
             <div class="album"><%= album.name %></div>
             <div class="year"><%= album.released %></div>
