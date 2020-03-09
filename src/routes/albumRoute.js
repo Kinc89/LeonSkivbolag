@@ -1,26 +1,18 @@
 const express = require("express");
-const albumRoute = express.Router();
+const app = express.Router();
 const { ROUTE, VIEW } = require("./variables");
 
 const Album = require("../../model/album");
-const getLastFmData = require('../functions/getLastFmData');
 
 app.get(ROUTE.album, async (req, res) => {
     
-    const data = await getLastFmData();
+    // const params = await req.params.id;
+    // console.log(params);
 
-    await new Album({
-         name: data.album.name,
-         artist: data.album.artist,
-         released: data.album.wiki.published,
-         description: data.album.wiki.summary,
-         imgUrl: data.album.image[data.album.image.length-1]["#text"]
-     }).save();
+    const album = await Album.findOne( { _id: req.params.id });
+    console.log(album);
 
-    const albums = await Album.find();
-    console.log(req);
-
-    res.render(VIEW.album, { albums });
+    res.render(VIEW.album, { album });
 });
 
-module.exports = albumRoute;
+module.exports = app;

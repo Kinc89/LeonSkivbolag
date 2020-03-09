@@ -4,20 +4,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" type="text/css" href="temp.css">
+    <title>Album</title>
+    <link rel="stylesheet" href="css/index.css">
     <script src="https://kit.fontawesome.com/5fc0d582b6.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
     <header>
         <div id="menu collapse"><i class="fas fa-bars fa-lg"></i></div>
-        <div><img id="logo-small" src="temp-img/systemet.png" alt="logo"></div>
+        <div><img id="logo-small" src="/img/logo.png" alt="logo"></div>
         <div id="user"><i class="far fa-user fa-lg"></i></div>
         <div id="shoppingcart"><i class="fas fa-compact-disc fa-lg"></i></div>
     </header>
     <div class="albumContainer">
-        <div class="fullAlbum"><%= album.name %></div>
+
+<!-- here exemple of a presentation of the datas sent from the new /album/id route -->
+<div class="item">            
+    <div class="image">
+        <img src="<%= album.imgUrl %>" alt="Image of '<%= album.name %>' by <%= album.artist %>" />
+    </div>
+    <div class="artist"><%= album.artist %></div>
+    <div class="album"><%= album.name %></div>
+    <div class="year"><%= album.released %></div>
+    <div class="genre"><%= album.genre %></div>
+</div>
+<!-- end of exemple -->
+
         <div class="price">Pris
             <div class="addToCartIcon">Icon</div>
         </div>

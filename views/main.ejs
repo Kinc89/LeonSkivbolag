@@ -24,12 +24,17 @@
     </div>
     <div class="container">
         <% albums.forEach((album) => { %>
-        <div class="item">
-            <div class="image"><img src="<%= album.imgUrl %>" alt="Image of '<%= album.name %>' by <%= album.artist %>"></div>
+        <div class="item">            
+            <div class="image">
+                <a href="/album/<%= album._id %>">
+                    <img src="<%= album.imgUrl %>" alt="Image of '<%= album.name %>' by <%= album.artist %>" />
+                </a>
+            </div>
             <div class="artist"><%= album.artist %></div>
             <div class="album"><%= album.name %></div>
             <div class="year"><%= album.released %></div>
             <div class="genre"><%= album.genre %></div>
+        
         </div>
         <% }) %>
     </div>

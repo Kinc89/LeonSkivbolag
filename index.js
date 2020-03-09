@@ -24,10 +24,11 @@ app.set('view engine', 'ejs');
 // routes variables
 const mainRoute = require("./src/routes/mainRoute");
 const adminRoute = require("./src/routes/adminRoute");
-
+const albumRoute = require("./src/routes/albumRoute");
 // routes use
 app.use(mainRoute);
 app.use(adminRoute);
+app.use(albumRoute);
 
 // Start servern
 const dbOptions = { useUnifiedTopology: true, useNewUrlParser: true, useCreateIndex: true };
