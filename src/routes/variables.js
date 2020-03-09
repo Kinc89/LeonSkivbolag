@@ -2,7 +2,7 @@
 const ROUTE = {
     root: '/',
     admin: '/admin',
-    album: '/album',
+    album: '/album/:id',
     addAlbum: '/add-album'
 };
 
