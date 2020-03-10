@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-
+const path = require('path')
 const express = require('express');
 const sassMiddleware = require('node-sass-middleware');
 const app = express();
@@ -15,7 +15,7 @@ app.use(sassMiddleware({ // tell sassMiddleware where src file and dest director
     outputStyle: 'compressed'
 }));
 // define a static folder, 'public'
-app.use(express.static('public'));
+app.use(express.static(path.join(__dirname + '/public')));
 // express body-parser
 app.use(express.urlencoded({ extended: true }));
 // view engine to use, ejs in this case

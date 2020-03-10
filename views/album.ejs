@@ -5,33 +5,31 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Album</title>
-    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="../css/index.css">
     <script src="https://kit.fontawesome.com/5fc0d582b6.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
     <header>
         <div id="menu collapse"><i class="fas fa-bars fa-lg"></i></div>
-        <div><img id="logo-small" src="/img/logo.png" alt="logo"></div>
-        <div id="user"><i class="far fa-user fa-lg"></i></div>
+        <div id="logo-container"><img id="logo-small" src="/img/logo.png" alt="Skivbolaget logo"></div>
+        <a href="/signup"><div id="user"><i class="far fa-user fa-lg"></i></div></a>
         <div id="shoppingcart"><i class="fas fa-compact-disc fa-lg"></i></div>
     </header>
-    <div class="albumContainer">
-
+    <div class="container">
 <!-- here exemple of a presentation of the datas sent from the new /album/id route -->
-<div class="item">            
-    <div class="image">
-        <img src="<%= album.imgUrl %>" alt="Image of '<%= album.name %>' by <%= album.artist %>" />
-    </div>
-    <div class="artist"><%= album.artist %></div>
-    <div class="album"><%= album.name %></div>
-    <div class="year"><%= album.released %></div>
-</div>
-<!-- end of exemple -->
-
-        <div class="price">Pris
-            <div class="addToCartIcon">Icon</div>
+        <div class="item">            
+            <div class="image">
+                <img src="<%= album.imgUrl %>" alt="Image of '<%= album.name %>' by <%= album.artist %>" />
+            </div>
+            <div class="artist"><%= album.artist %></div>
+            <div class="album"><%= album.name %></div>
+            <div class="year"><%= album.released %></div>
+            <div class="price">Pris</div>
         </div>
+    </div>
+<!-- end of exemple -->
+    <div class="albumContainer">
         <div class="musicPlayer">
             <iframe src="https://open.spotify.com/embed/album/0xtOxVRRaA0kW7X4PlbtuP" width="93%" height="380"
                 frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
