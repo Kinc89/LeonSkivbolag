@@ -16,8 +16,10 @@
   "author": "Julia, Leon, Oskar, Yamandu, Balthazar",
   "license": "ISC",
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "ejs": "^3.0.1",
     "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.9.1",
     "node-fetch": "^2.6.0",
     "node-sass": "^4.13.1",

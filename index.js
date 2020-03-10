@@ -1,7 +1,8 @@
 const mongoose = require('mongoose');
-const path = require('path')
 const express = require('express');
+
 const sassMiddleware = require('node-sass-middleware');
+const path = require('path')
 const app = express();
 
 const dbConfig = require('./config/config');
