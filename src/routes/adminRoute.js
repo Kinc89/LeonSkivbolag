@@ -20,6 +20,20 @@ app.post(ROUTE.admin, async (req, res) => {
     // send to the getLastFmData artist and album strings to fetch data on the album
     const data = await getLastFmData(artist, album);
 
+    console.log("IMAGES FROM ALBUM FROM LASTFM => ", data.album.image);
+
+    // manipulating the image URL to get a 1280x1280 px.
+
+
+
+    const imgUrlSmall = data.album.image[data.album.image.length-1]["#text"];
+    const imgUrl = imgUrlSmall.replace("300x300", "1280x1280");
+    // const imgUrlSmall = "https://lastfm.freetls.fastly.net/i/u/300x300/17b8c0dd81e6adb14665afab1676706e.png";
+    
+    console.log("IMG URL =>", imgUrl);
+
+
+
     let releaseDate;
     let description;
 
@@ -39,10 +53,10 @@ app.post(ROUTE.admin, async (req, res) => {
         artist: data.album.artist,
         released: releaseDate,
         description: description,
-        imgUrl: data.album.image[data.album.image.length-1]["#text"]
+        imgUrl: imgUrl
     }).save();
 
-    console.log(newAlbum);
+    // console.log("NEW ALBUM IN DB => ", newAlbum);
 
     res.redirect(ROUTE.admin);
     
