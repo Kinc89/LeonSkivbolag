@@ -5,9 +5,6 @@ const { ROUTE, VIEW } = require("./variables");
 const Album = require("../../model/album");
 
 app.get(ROUTE.album, async (req, res) => {
-    
-    // const params = await req.params.id;
-    // console.log(params);
 
     const album = await Album.findOne( { _id: req.params.id });
     console.log(album);
