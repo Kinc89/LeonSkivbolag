@@ -17,6 +17,7 @@
   "author": "Julia, Leon, Oskar, Yamandu, Balthazar",
   "license": "ISC",
   "dependencies": {
+    "bcrypt": "^4.0.1",
     "bcryptjs": "^2.4.3",
     "ejs": "^3.0.1",
     "express": "^4.17.1",
