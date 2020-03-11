@@ -6,7 +6,8 @@
   "scripts": {
     "test": "mocha",
     "start": "nodemon index.js",
-    "sass": "node-sass --watch sass/css -o public/css"
+    "sass": "node-sass --watch sass/css -o public/css",
+    "cypress:open": "cypress open"
   },
   "keywords": [
     "label",
@@ -27,6 +28,7 @@
   },
   "devDependencies": {
     "chai": "^4.2.0",
+    "cypress": "^4.1.0",
     "mocha": "^7.0.1",
     "node-sass-middleware": "^0.11.0",
     "nodemon": "^2.0.2",

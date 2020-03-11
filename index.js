@@ -38,5 +38,3 @@ const dbOptions = { useUnifiedTopology: true, useNewUrlParser: true, useCreateIn
 mongoose.connect(dbConfig.databaseURL, dbOptions).then(() => {
     app.listen(port, () => console.log(`App listening on port ${port}! http://localhost:4000`))
 });
-
-// module.exports = { app, port };
