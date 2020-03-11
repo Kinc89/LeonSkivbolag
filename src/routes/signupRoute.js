@@ -2,37 +2,51 @@ const express = require("express");
 const app = express.Router();
 const { ROUTE, VIEW } = require("./variables");
 
+// authentification modules
+const bcrypt = require("bcryptjs");
+const jwt = require("jsonwebtoken");
+
+// User schema to database
 const User = require("../../model/user");
 
+let foundUser = false;
+
 app.get(ROUTE.signup, (req, res) => {
-    res.render(VIEW.signup);
+    res.render(VIEW.signup, { foundUser: false });
 });
 
 app.post("/signup", async (req, res) => {
     
-    // const salt = await bcrypt.genSalt(10); 
-    // // generate salt "power 10", see doc for more info. If await, don't use getSaltSync, if getSaltSync, no await…
+    const salt = await bcrypt.genSalt(10);
 
-    // const hashPassword = await bcrypt.hash(req.body.password, salt); 
-    // // take the input from user, add "salt" and hash it with the module. If await, don't use hashSync, if hashSync, no await…
+    const hashPassword = await bcrypt.hash(req.body.password, salt);
 
-    adminUsers = ["julia", "balthazar", "leon", "yamandu", "oskar"];
-
-    if (adminUsers.includes(req.body.username)) {
-        const status = "admin";
+    // Does user already exist in DB?
+    const foundUser = await User.exists({ username: req.body.username })
+    if (foundUser) { 
+        res.render(VIEW.signup, { foundUser: true });
     }
+    
+    // Can the new user become an admin?
+    let status;
+    const adminUsers = ["julia", "balthazar", "leon", "yamandu", "oskar"];
+    if (adminUsers.includes(req.body.username)) {
+        status = "admin";
+    }
+
+    console.log(status)
 
     await new User({
         email: req.body.email,
         username: req.body.username,
-        status: status,
-        password: req.body.password
+        password: hashPassword,
+        status: status
     }).save();
     
-    const user = await User.findOne({ email: req.body.email }); // or find (worked)?
-    console.log(user);
+    const users = await User.find(); // or find (worked)?
+    console.log(users);
     // res.redirect("userProfile");
-    res.send(user);
+    res.redirect(VIEW.login);
 
 });
 
