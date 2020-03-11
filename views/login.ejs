@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Log-in page</title>
+</head>
+<body>
+    <h1>Log-in page</h1>
+
+    <form action="/login" method="post" id="post-login-form">
+
+        <input type="text" name="username" id="username" placeholder="enter you username"><br />
+        <br />
+        <input type="password" name="password" id="password" placeholder="enter your password"><br />
+        <br />
+        <button type="submit">Log in</button>
+
+        <% if (invalidUser) { %> 
+            <p>The username and password doesn't match. Please try again.</p>
+        <% } %>
+
+        <% if (!invalidUser) { %> 
+            <% if (!foundUser) { %> 
+                <p>The user doesn't exist. Please sign up at <a href="/signup">Sign-up page</a>.</p>
+            <% } else { %>
+                <p>If you don't have an account yet, please sign up on <a href="/signup">Sign-up page</a></p>
+            <% } %>
+        <% } %>
+
+    </form>
+
+</body>
+</html>

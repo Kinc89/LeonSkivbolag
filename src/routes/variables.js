@@ -4,7 +4,8 @@ const ROUTE = {
     admin: '/admin',
     album: '/album/:id',
     addAlbum: '/add-album',
-    signup: '/signup'
+    signup: '/signup',
+    login: '/login'
 };
 
 // view variables
@@ -13,7 +14,9 @@ const VIEW = {
     admin: 'admin',
     album: 'album',
     addAlbum: 'add-album',
-    signup: 'signup'
+    signup: 'signup',
+    login: 'login'
+
 };
 
 module.exports = { ROUTE, VIEW };
