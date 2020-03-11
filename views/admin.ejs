@@ -11,5 +11,10 @@
         <input type="text" name="url" id="urlLastFm" placeholder="Copy URL from Last.fm" />
         <button type="submit">Post album</button>
     </form>
+
+    <% if (user) { %>
+        <%= user %>
+    <% } %>
+
 </body>
 </html>

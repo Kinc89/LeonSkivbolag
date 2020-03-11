@@ -5,8 +5,10 @@ const { ROUTE, VIEW } = require("./variables");
 const Album = require("../../model/album");
 const getLastFmData = require('../functions/getLastFmData');
 
+let user;
+
 app.get(ROUTE.admin, async (req, res) => {
-    res.render(VIEW.admin);
+    res.render(VIEW.admin, { user });
 });
 
 app.post(ROUTE.admin, async (req, res) => {

@@ -9,8 +9,10 @@ const jwt = require("jsonwebtoken");
 // User schema to database
 const User = require("../../model/user");
 
+let foundUser = false;
+
 app.get(ROUTE.signup, (req, res) => {
-    res.render(VIEW.signup);
+    res.render(VIEW.signup, { foundUser: false });
 });
 
 app.post("/signup", async (req, res) => {
@@ -19,10 +21,10 @@ app.post("/signup", async (req, res) => {
 
     const hashPassword = await bcrypt.hash(req.body.password, salt);
 
-    // Does user already exists in DB?
+    // Does user already exist in DB?
     const foundUser = await User.exists({ username: req.body.username })
     if (foundUser) { 
-        res.redirect(VIEW.signup);
+        res.render(VIEW.signup, { foundUser: true });
     }
     
     // Can the new user become an admin?
@@ -44,7 +46,7 @@ app.post("/signup", async (req, res) => {
     const users = await User.find(); // or find (worked)?
     console.log(users);
     // res.redirect("userProfile");
-    res.send(users);
+    res.redirect(VIEW.login);
 
 });
 
