@@ -12,6 +12,14 @@
         <button type="submit">Post album</button>
     </form>
 
+    <% if (invalidAlbum) { %>
+        <p>The data from Last.fm about the album '<%= data.album.name %>' by artist <i><%= data.album.artist %></i> doesn't contain enough information to be added to Skivbolaget.</p>
+    <% } %>
+
+    <% if (albumAdded) { %>
+        <p>The data from Last.fm about the album '<%= newAlbumInDb.name %>' by artist <i><%= newAlbumInDb.artist %></i> has been successfully added to Skivbolaget.</p>
+    <% } %>
+
     <% if (user) { %>
         <%= user %>
     <% } %>

@@ -8,7 +8,7 @@ const getLastFmData = require('../functions/getLastFmData');
 let user;
 
 app.get(ROUTE.admin, async (req, res) => {
-    res.render(VIEW.admin, { user });
+    res.render(VIEW.admin, { user, invalidAlbum: false, albumAdded: false });
 });
 
 app.post(ROUTE.admin, async (req, res) => {
@@ -22,6 +22,8 @@ app.post(ROUTE.admin, async (req, res) => {
     // send to the getLastFmData artist and album strings to fetch data on the album
     const data = await getLastFmData(artist, album);
 
+    console.log(data);
+
     // manipulating the image URL to get a 1280x1280px
     const imgUrlDefault = data.album.image[data.album.image.length-1]["#text"];
     const imgUrl = imgUrlDefault.replace("300x300", "1280x1280");
@@ -31,27 +33,37 @@ app.post(ROUTE.admin, async (req, res) => {
     let description;
 
     if (!data.album.wiki) { 
-        releaseDate = "(Unknown)";
-        description = "(Unknown)";
+        
+        res.render(VIEW.admin, { user: undefined, invalidAlbum: true, data, albumAdded: false });
+    
     } else {
+        
+        // filter the release date data to get only the release year.
         const releaseDateFullVersion = await data.album.wiki.published;
         const releaseDataAsArray = releaseDateFullVersion.split(" ");
         releaseDate = releaseDataAsArray[2].slice(0, 4);
 
-        description = data.album.wiki.summary;
+        // filter the description data to delete the link at the end.
+        const descriptionFullVersion = await data.album.wiki.summary;
+        const indexOfLink = descriptionFullVersion.indexOf("<a");
+        const descriptionShortVersion = descriptionFullVersion.substring(0, indexOfLink).trimEnd();
+        description = descriptionShortVersion;
+    
+        const newAlbum = await new Album({
+            name: data.album.name,
+            artist: data.album.artist,
+            released: releaseDate,
+            description: description,
+            imgUrl: imgUrl
+        }).save();
+
+        const newAlbumInDb = await Album.findOne({ _id: newAlbum._id });
+
+        console.log("NEW ALBUM IN DB > ", newAlbumInDb);
+
+        res.render(VIEW.admin, { user: undefined, invalidAlbum: false, albumAdded: true, newAlbumInDb });
+
     }
-
-    const newAlbum = await new Album({
-        name: data.album.name,
-        artist: data.album.artist,
-        released: releaseDate,
-        description: description,
-        imgUrl: imgUrl
-    }).save();
-
-    console.log("NEW ALBUM IN DB > ", newAlbum);
-
-    res.redirect(ROUTE.admin);
     
 });
 
