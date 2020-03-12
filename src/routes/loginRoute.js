@@ -11,9 +11,6 @@ const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const verifyToken = require("./verifyToken");
 
-let foundUser = true;
-let invalidUser = false;
-
 app.get(ROUTE.login, (req, res) => {
 
     res.render(VIEW.login, { foundUser: true, invalidUser: false });
@@ -50,7 +47,12 @@ app.post(ROUTE.login, async (req, res) => {
                 res.cookie("jsonwebtoken", token, { maxAge: 3600000, httpOnly: true })
             };
 
-            res.render(VIEW.admin, { user });
+            if (user.status == "admin") {
+                res.redirect(ROUTE.admin);
+            } else {
+                res.redirect(ROUTE.userProfile);
+            }
+
         }
 
     });
