@@ -18,7 +18,11 @@
         <a href="/signup">
             <div id="user" class="header-icon"><i class="far fa-user fa-lg"></i></div>
         </a>
-        <div id="shoppingcart" class="header-icon"><i class="fas fa-compact-disc fa-lg"></i></div>
+        <!-- from julia och balthazar --> 
+        <a href="/cart">        
+            <div id="shoppingcart" class="header-icon"><i class="fas fa-compact-disc fa-lg"></i></div>
+        </a>
+        <!-- from julia och balthazar -->
     </header>
     <div class="sortContainer">
         <div class="filter">filter</div>
@@ -36,6 +40,12 @@
             <div class="album"><i><%= album.name %></i></div>
             <div class="year"><%= album.released %></div>
             <div class="price"><%= album.price %> SEK</div>
+
+            <!-- from julia och balthazar -->
+            <form action="/addtocart/<%= album._id %>" method="get">
+                <button type="submit" style="color:aqua">Buy</button>
+            </form>
+            <!-- end from julia och balthazar -->
 
         </div>
         <% }) %>
