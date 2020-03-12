@@ -11,12 +11,7 @@ body {
 header {
     display: grid;
     width: 100%;
-<<<<<<< HEAD
-    height: 60px;
-   // height: 20%; vet inte om denna kanske kommer funka bättre?
-=======
     height: 20%;
->>>>>>> e9bde849ce4ab61b434250a66b43d0ef66e217b5
     grid-template-columns: [menu] 1fr [logo] 5fr [user] 1fr [shoppingCart] 1fr;
     align-items: center;
     text-align: center;
