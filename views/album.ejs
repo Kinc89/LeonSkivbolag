@@ -17,30 +17,35 @@
         <div id="shoppingcart" class="header-icon"><i class="fas fa-compact-disc fa-lg"></i></div>
     </header>
     <div class="container">
-<!-- here exemple of a presentation of the datas sent from the new /album/id route -->
-        <div class="item">            
+        <!-- here exemple of a presentation of the datas sent from the new /album/id route -->
+        <div class="item">
             <div class="image">
                 <img src="<%= album.imgUrl %>" alt="Image of '<%= album.name %>' by <%= album.artist %>" />
             </div>
             <div class="artist"><%= album.artist %></div>
-            <div class="album"><%= album.name %></div>
+            <div class="album"><i><%= album.name %></i></div>
             <div class="year"><%= album.released %></div>
             <div class="price">Pris</div>
         </div>
     </div>
-<!-- end of exemple -->
+    <!-- end of exemple -->
     <div class="albumContainer">
         <div class="musicPlayer">
             <iframe src="https://open.spotify.com/embed/album/0xtOxVRRaA0kW7X4PlbtuP" width="100%" height="380"
                 frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
         </div>
         <div class="curator">Curator</div>
-        <div class="curatorsNote"><p>Lorem Ipsum is the single greatest threat. We are not - we are not keeping up with
-            other websites. Lorem Ipsum best not make any more threats to your website. It will be met with fire and
-            fury like the world has never seen. Does everybody know that pig named Lorem Ipsum? An ‘extremely credible
-            source’ has called my office and told me that Barack Obama’s placeholder text is a fraud.</p></div>
+        <div class="curatorsNote">
+            <p>Lorem Ipsum is the single greatest threat. We are not - we are not keeping up with
+                other websites. Lorem Ipsum best not make any more threats to your website. It will be met with fire and
+                fury like the world has never seen. Does everybody know that pig named Lorem Ipsum? An ‘extremely
+                credible
+                source’ has called my office and told me that Barack Obama’s placeholder text is a fraud.</p>
+        </div>
         <div class="aboutAlbum">About album</div>
-        <div class="albumInfo"><p><%= album.description %></p></div>
+        <div class="albumInfo">
+            <p><%= album.description %></p>
+        </div>
     </div>
 </body>
 
