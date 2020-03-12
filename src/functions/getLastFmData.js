@@ -12,7 +12,7 @@ async function getLastFmData (artist, album) {
         albumDecoded +
         "&format=json";
 
-    console.log(url);
+    // console.log(url);
 
     const requestOptions = {
         method: 'GET',
@@ -21,7 +21,7 @@ async function getLastFmData (artist, album) {
 
     return await fetch(url, requestOptions)
         .then(res => res.json())
-        .catch(error => console.log('error', error));
+        .catch(error => error);
 }
 
 module.exports = getLastFmData;

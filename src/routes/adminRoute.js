@@ -4,11 +4,12 @@ const { ROUTE, VIEW } = require("./variables");
 
 const Album = require("../../model/album");
 const getLastFmData = require('../functions/getLastFmData');
+const checkIfAlbumExists = require('../functions/checkIfAlbumExists');
 
 let user;
 
 app.get(ROUTE.admin, async (req, res) => {
-    res.render(VIEW.admin, { user, invalidAlbum: false, albumAdded: false });
+    res.render(VIEW.admin, { user, invalidAlbum: false, albumAdded: false, existingAlbum: false, error: false });
 });
 
 app.post(ROUTE.admin, async (req, res) => {
@@ -22,7 +23,10 @@ app.post(ROUTE.admin, async (req, res) => {
     // send to the getLastFmData artist and album strings to fetch data on the album
     const data = await getLastFmData(artist, album);
 
-    console.log(data);
+
+    if (data.error) {
+        res.render(VIEW.admin, { user: undefined, invalidAlbum: false, albumAdded: false, existingAlbum: false, error: true });
+    }
 
     // manipulating the image URL to get a 1280x1280px
     const imgUrlDefault = data.album.image[data.album.image.length-1]["#text"];
@@ -32,10 +36,17 @@ app.post(ROUTE.admin, async (req, res) => {
     let releaseDate;
     let description;
 
+    // check whether the album already exists in the database.
+    const foundAlbum = await checkIfAlbumExists(data.album.artist, data.album.name);
+
     if (!data.album.wiki) { 
-        
-        res.render(VIEW.admin, { user: undefined, invalidAlbum: true, data, albumAdded: false });
-    
+
+        res.render(VIEW.admin, { user: undefined, invalidAlbum: true, data, albumAdded: false, existingAlbum: false, error: false });
+
+    } else if (foundAlbum){
+
+        res.render(VIEW.admin, { user: undefined, invalidAlbum: false, data, albumAdded: false, existingAlbum: true, error: false });
+
     } else {
         
         // filter the release date data to get only the release year.
@@ -61,7 +72,7 @@ app.post(ROUTE.admin, async (req, res) => {
 
         console.log("NEW ALBUM IN DB > ", newAlbumInDb);
 
-        res.render(VIEW.admin, { user: undefined, invalidAlbum: false, albumAdded: true, newAlbumInDb });
+        res.render(VIEW.admin, { user: undefined, invalidAlbum: false, albumAdded: true, existingAlbum: false, newAlbumInDb, error: false });
 
     }
     
