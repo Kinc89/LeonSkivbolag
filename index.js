@@ -36,6 +36,8 @@ const loginRoute = require("./src/routes/loginRoute");
 const addToCartRoute = require("./src/routes/addToCartRoute");
 const userProfileRoute = require("./src/routes/userProfileRoute");
 const cartRoute = require("./src/routes/cartRoute");
+const checkoutRoute = require("./src/routes/checkoutRoute");
+const confirmationRoute = require("./src/routes/confirmationRoute");
 // routes use
 app.use(mainRoute);
 app.use(adminRoute);
@@ -45,6 +47,8 @@ app.use(loginRoute);
 app.use(addToCartRoute);
 app.use(userProfileRoute);
 app.use(cartRoute);
+app.use(checkoutRoute);
+app.use(confirmationRoute);
 
 // Start servern
 const dbOptions = { useUnifiedTopology: true, useNewUrlParser: true, useCreateIndex: true };

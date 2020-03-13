@@ -8,7 +8,9 @@ const ROUTE = {
     login: '/login',
     addToCart: '/addToCart/:id',
     userProfile: '/userProfile',
-    cart: '/cart'
+    cart: '/cart',
+    checkout: '/checkout',
+    confirmation: '/confirmation'
 };
 
 // view variables
@@ -20,7 +22,9 @@ const VIEW = {
     signup: 'signup',
     login: 'login',
     userProfile: 'user-profile',
-    cart: 'cart'
+    cart: 'cart',
+    checkout: 'checkout',
+    confirmation: 'confirmation'
 };
 
 module.exports = { ROUTE, VIEW };

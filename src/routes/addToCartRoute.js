@@ -19,9 +19,6 @@ console.log(user);
 
 await user.save();
 
-
-
-
 res.redirect(ROUTE.root);
 
 });

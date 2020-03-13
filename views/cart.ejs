@@ -1,17 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Skivbolaget : CART</title>
-</head>
+<%- include('head') %>
 <body>
+    <%- include('header') %>
+
     <h1>Cart</h1>
 
     <p>Welcome <strong><%= user.username %></strong> to your cart. You have <%= user.cart.length %> items in your cart.</p>
 
     <form action="/checkout" method="get">
-        <button type="submit">here will be a working checkout button</button>
+        <button type="submit">To checkout page</button>
     </form>
 
 </body>
