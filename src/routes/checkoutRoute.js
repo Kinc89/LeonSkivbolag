@@ -14,7 +14,8 @@ app.get(ROUTE.checkout, verifyToken, async (req, res) => {
 // create an order number and save it to database to the specific user
 
 // where are coming the data from here?
-const user = await User.findById({})
+// const user = await User.findById({})
+const user = "here will be USER data";
 
 res.render(VIEW.checkout, { user });
 
