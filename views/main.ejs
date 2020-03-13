@@ -11,12 +11,18 @@
 </head>
 
 <body>
-    
+
     <header>
         <div id="menu-collapse" class="header-icon"><i class="fas fa-bars fa-lg"></i></div>
-        <div id="logo-container"><img id="logo-small" src="/img/logo.png" alt="Skivbolaget logo"></div>
-        <a href="/signup"><div id="user" class="header-icon"><i class="far fa-user fa-lg"></i></div></a>
-        <div id="shoppingcart" class="header-icon"><i class="fas fa-compact-disc fa-lg"></i></div>
+        <div id="logo-container"><img id="logo-small" src="/img/logo.svg" alt="Skivbolaget logo"></div>
+        <a href="/signup">
+            <div id="user" class="header-icon"><i class="far fa-user fa-lg"></i></div>
+        </a>
+        <!-- from julia och balthazar --> 
+        <a href="/cart">        
+            <div id="shoppingcart" class="header-icon"><i class="fas fa-compact-disc fa-lg"></i></div>
+        </a>
+        <!-- from julia och balthazar -->
     </header>
     <div class="sortContainer">
         <div class="filter">filter</div>
@@ -24,7 +30,7 @@
     </div>
     <div class="container">
         <% albums.forEach((album) => { %>
-        <div class="item">            
+        <div class="item">
             <div class="image">
                 <a href="/album/<%= album._id %>">
                     <img src="<%= album.imgUrl %>" alt="Image of '<%= album.name %>' by <%= album.artist %>" />
@@ -34,7 +40,13 @@
             <div class="album"><i><%= album.name %></i></div>
             <div class="year"><%= album.released %></div>
             <div class="price"><%= album.price %> SEK</div>
-        
+
+            <!-- from julia och balthazar -->
+            <form action="/addtocart/<%= album._id %>" method="get">
+                <button type="submit" style="color:aqua">Buy</button>
+            </form>
+            <!-- end from julia och balthazar -->
+
         </div>
         <% }) %>
     </div>

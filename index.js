@@ -33,12 +33,18 @@ const adminRoute = require("./src/routes/adminRoute");
 const albumRoute = require("./src/routes/albumRoute");
 const signupRoute = require("./src/routes/signupRoute");
 const loginRoute = require("./src/routes/loginRoute");
+const addToCartRoute = require("./src/routes/addToCartRoute");
+const userProfileRoute = require("./src/routes/userProfileRoute");
+const cartRoute = require("./src/routes/cartRoute");
 // routes use
 app.use(mainRoute);
 app.use(adminRoute);
 app.use(albumRoute);
 app.use(signupRoute);
 app.use(loginRoute);
+app.use(addToCartRoute);
+app.use(userProfileRoute);
+app.use(cartRoute);
 
 // Start servern
 const dbOptions = { useUnifiedTopology: true, useNewUrlParser: true, useCreateIndex: true };

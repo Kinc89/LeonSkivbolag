@@ -1,8 +1,14 @@
+$break-small: 320px;
+$break-medium: 768px;
+$break-large: 1200px;
+
 body {
-    background-color:#2B2B2B;
+    background-color: rgb(138, 138, 138);
     color: #e0e0e0;
     font-family: 'Roboto Condensed', sans-serif;
-} 
+    margin: 0;
+}
+
 header {
     display: grid;
     width: 100%;
@@ -11,36 +17,30 @@ header {
     align-items: center;
     text-align: center;
     background-color: rgb(46, 46, 46);
-    
-
     #logo-container {
-        height: 100%;
+        height:80%;
+        vertical-align: middle;
+
+        img{
+            height:100%;
+        }
 
         #logo-small {
-            padding-top: 4px;
+            // padding-top: 4px;
             max-width: 100%;
         }
     }
-
+    .header-icon {
+        font-size: 3vw;
+    }
     i {
         color: #e0e0e0;
     }
-
-    .header-icon{
-        font-size: 4vw;
-    }
-    @media (min-width: 768px) {
-        .header-icon{
-            font-size: 3vw;
-        }
-    }
-
-       
 }
 .sortContainer{
     display: flex;
     font-size: 1.2em;
-    .filter{ 
+    .filter{
         margin-left: auto;
         display: flex;
     }
@@ -57,10 +57,10 @@ header {
     .item {
         display: grid;
         width: 100%;
-        grid-template-columns: 30px repeat(12, 1fr) 30px;
+        grid-template-columns: 15px repeat(12, 1fr) 15px;
         grid-template-rows: repeat(15fr);
-    }
 
+    }
     .image {
         margin-top: 20px;
         grid-column: 2   / 14;
@@ -70,16 +70,13 @@ header {
             max-width: 100%;
         }
     }
-    
     .artist {
         grid-column: 2 / 9;
         grid-row: 13 / 14;
         font-size: 1.2em;
         color: #e0e0e0;
-        // font-weight: lighter;
         margin-top: 5px;
     }
-
     .album {
         grid-column: 2 / 14;
         grid-row: 13 / 14;
@@ -87,9 +84,7 @@ header {
         font-size: 1.2em;
         color: #f4f4f4;
         margin-top: 5px;
-
     }
-
     .year {
         grid-column: 10 / 14;
         grid-row: 14 / 15;
@@ -98,74 +93,38 @@ header {
         font-weight: lighter;
         margin-top: 5px;
     }
-
     .price {
-        /* background: #18A026; */
-        // border-radius: 5px;
-        // border: 4px solid #18A026;
-        // box-sizing: border-box;
-        // border-radius: 6px;
         grid-column: 2 / 9;
         grid-row: 14 / 15;
-        // margin-left: 10px;
         font-size: 1em;
         font-weight: lighter;
         margin-top: 5px;
     }
-
-    
-
-    // .genre {
-    //     grid-column: 3 / 14;
-    //     grid-row: 14 / 15;
-    //     margin-left: 10px;
-    //     font-size: 1.4em;
-    //     font-weight: lighter;
-    // }
 }
-
-/* todo nästla .albumcontainer { under här } med scss */
 .albumContainer {
-    // display: grid;
-    // width: 100%;
-    // grid-template-columns: 30px repeat(1, 1fr) 30px;
-    // grid-template-rows: repeat(15fr);
     text-align: center;
     width: 1fr;
-    // margin: auto;
     margin-left: 30px;
     margin-right: 30px;
-    // margin-top: 15px;
-    /* todo all scss under denna kan t abort text-align och width */
-
     .fullAlbum {
-        /* background: #18818C; */
-        // border: 4px solid #18818C;
         box-sizing: border-box;
         border-radius: 6px;
     }
-
     .price {
-        /* background: #18A026; */
         border-radius: 5px;
-        // border: 4px solid #18A026;
         box-sizing: border-box;
         border-radius: 6px;
     }
-
     .musicPlayer {
         margin-top: 15px;
     }
-
     .curator {
-        // border: 4px solid #0F5259;
         box-sizing: border-box;
         background: #0F5259;
         border-radius: 6px;
         margin-top: 5px;
         font-size: 1.2em;
     }
-
     .curatorsNote {
         border: 1px solid #EEEEEE;
         box-sizing: border-box;
@@ -174,16 +133,13 @@ header {
         font-size: 0.9em;
         font-weight: lighter;
     }
-
     .aboutAlbum {
-        // border: 4px solid #0F5259;
         box-sizing: border-box;
         background: #0F5259;
-        border-radius: 10px;
+        border-radius: 6px;
         margin-top: 9px;
         font-size: 1.2em;
     }
-
     .albumInfo {
         border: 1px solid #EEEEEE;
         box-sizing: border-box;
@@ -191,9 +147,184 @@ header {
         margin-top: 9px;
         font-size: 0.9em;
         font-weight: lighter;
-        overflow-wrap: break-word;
     }
     p {
         margin: 6px;
+    }
+}
+//* scss för tablet
+@media screen and (min-width: $break-medium) {
+
+body {
+    background-color:rgb(238, 6, 6);
+    color: #e0e0e0;
+    font-family: 'Roboto Condensed', sans-serif;
+}
+header {
+    #logo-container {
+        height: 65%;
+    }
+}
+
+.sortContainer {
+    display: flex;
+    font-size: 1.2em;
+
+    .filter {
+        margin-left: auto;
+        display: flex;
+    }
+
+    .sort {
+        justify-content: flex-end;
+        margin-left: 10px;
+        margin-right: 15px;
+        display: inline;
+        text-align: right;
+    }
+}
+.container {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+}
+.albumContainer {
+    text-align: center;
+    width: 1fr;
+    margin-left: 30px;
+    margin-right: 30px;
+    .fullAlbum {
+        box-sizing: border-box;
+        border-radius: 6px;
+    }
+    .price {
+        border-radius: 5px;
+        box-sizing: border-box;
+        border-radius: 6px;
+    }
+    .musicPlayer {
+        margin-top: 15px;
+    }
+    .curator {
+        box-sizing: border-box;
+        background: #0F5259;
+        border-radius: 6px;
+        margin-top: 5px;
+        font-size: 1.2em;
+    }
+    .curatorsNote {
+        border: 1px solid #EEEEEE;
+        box-sizing: border-box;
+        border-radius: 6px;
+        margin-top: 9px;
+        font-size: 0.9em;
+        font-weight: lighter;
+    }
+    .aboutAlbum {
+        box-sizing: border-box;
+        background: #0F5259;
+        border-radius: 6px;
+        margin-top: 9px;
+        font-size: 1.2em;
+    }
+    .albumInfo {
+        border: 1px solid #EEEEEE;
+        box-sizing: border-box;
+        border-radius: 6px;
+        margin-top: 9px;
+        font-size: 0.9em;
+        font-weight: lighter;
+    }
+    p {
+        margin: 6px;
+    }
+}
+}
+//* scss för desktop
+@media screen and (min-width: $break-large) {
+
+    body {
+        background-color:rgb(2, 255, 36);
+        color: #e0e0e0;
+        font-family: 'Roboto Condensed', sans-serif;
+    }
+    header {
+        height: 60px;
+        grid-template-rows: 100%;
+        #logo-container {
+            height: 70%;
+        }
+        .header-icon {
+            font-size: 1.5vw;
+        }
+    }
+    .sortContainer{
+        display: flex;
+        font-size: 1.2em;
+        .filter{
+            margin-left: auto;
+            display: flex;
+        }
+        .sort{
+            justify-content: flex-end;
+            margin-left: 10px;
+            margin-right: 15px;
+            display: inline;
+            text-align: right;
+        }
+    }
+
+    .container {
+        grid-template-columns: repeat(3,1fr);
+    }
+    .albumContainer {
+        text-align: center;
+        width: 1fr;
+        margin-left: 30px;
+        margin-right: 30px;
+        .fullAlbum {
+            box-sizing: border-box;
+            border-radius: 6px;
+        }
+        .price {
+            border-radius: 5px;
+            box-sizing: border-box;
+            border-radius: 6px;
+        }
+        .musicPlayer {
+            margin-top: 15px;
+        }
+        .curator {
+            box-sizing: border-box;
+            background: #0F5259;
+            border-radius: 6px;
+            margin-top: 5px;
+            font-size: 1.2em;
+        }
+        .curatorsNote {
+            border: 1px solid #EEEEEE;
+            box-sizing: border-box;
+            border-radius: 6px;
+            margin-top: 9px;
+            font-size: 0.9em;
+            font-weight: lighter;
+        }
+        .aboutAlbum {
+            box-sizing: border-box;
+            background: #0F5259;
+            border-radius: 6px;
+            margin-top: 9px;
+            font-size: 1.2em;
+        }
+        .albumInfo {
+            border: 1px solid #EEEEEE;
+            box-sizing: border-box;
+            border-radius: 6px;
+            margin-top: 9px;
+            font-size: 0.9em;
+            font-weight: lighter;
+        }
+        p {
+            margin: 6px;
+        }
     }
 }
