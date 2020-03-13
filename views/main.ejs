@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Skivbolaget</title>
     <link rel="stylesheet" href="../css/index.css">
-    <!-- <link rel="stylesheet" href="css/temp.css"> -->
     <script src="https://kit.fontawesome.com/5fc0d582b6.js" crossorigin="anonymous"></script>
 </head>
 
@@ -18,11 +17,9 @@
         <a href="/signup">
             <div id="user" class="header-icon"><i class="far fa-user fa-lg"></i></div>
         </a>
-        <!-- from julia och balthazar --> 
-        <a href="/cart">        
+        <a href="/cart">
             <div id="shoppingcart" class="header-icon"><i class="fas fa-compact-disc fa-lg"></i></div>
         </a>
-        <!-- from julia och balthazar -->
     </header>
     <div class="sortContainer">
         <div class="filter">filter</div>
@@ -39,14 +36,11 @@
             <div class="artist"><%= album.artist %></div>
             <div class="album"><i><%= album.name %></i></div>
             <div class="year"><%= album.released %></div>
-            <div class="price"><%= album.price %> SEK</div>
-
-            <!-- from julia och balthazar -->
-            <form action="/addtocart/<%= album._id %>" method="get">
-                <button type="submit" style="color:aqua">Buy</button>
-            </form>
-            <!-- end from julia och balthazar -->
-
+            <div class="price">
+                <form action="/addtocart/<%= album._id %>" method="get">
+                    <button type="submit" style="color:black"><%= album.price %> SEK</button>
+                </form>
+            </div>
         </div>
         <% }) %>
     </div>
