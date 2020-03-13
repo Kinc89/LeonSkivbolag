@@ -9,7 +9,7 @@ const User = require("../../model/user");
 // authentification modules
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
-const verifyToken = require("./verifyToken");
+const verifyToken = require("../middlewares/verifyToken");
 
 app.get(ROUTE.login, (req, res) => {
 
@@ -28,11 +28,8 @@ app.post(ROUTE.login, async (req, res) => {
     // compare with database info
     const validUser = await bcrypt.compare(req.body.password, user.password); // true?
 
-    console.log(validUser);
-
     if (!validUser) return res.render(VIEW.login, { foundUser: true, invalidUser: true });
 
-    console.log(config.secretKey);
 
 
     jwt.sign({ user }, config.secretKey, (err, token) => { // the string secretKey must come from the config file. 

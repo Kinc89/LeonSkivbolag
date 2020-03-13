@@ -4,7 +4,7 @@ const { ROUTE, VIEW } = require("./variables");
 
 const User = require("../../model/user");
 
-const verifyToken = require("./verifyToken");
+const verifyToken = require("../middlewares/verifyToken");
 
 app.get(ROUTE.checkout, verifyToken, async (req, res) => {
 

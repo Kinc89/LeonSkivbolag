@@ -1,21 +1,28 @@
 const express = require("express");
 const app = express.Router();
 const { ROUTE, VIEW } = require("./variables");
+const config = require("../../config/config")
 
 // authentification modules
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 
+const verifyToken = require("../middlewares/verifyToken");
+
 // User schema to database
 const User = require("../../model/user");
 
-let foundUser = false;
+app.get(ROUTE.signup, verifyToken, (req, res) => {
 
-app.get(ROUTE.signup, (req, res) => {
-    res.render(VIEW.signup, { foundUser: false });
+    if (!req.body.user || req.body.user.status === "guest") return res.render(VIEW.signup, { foundUser: false });
+
+    if (req.body.user.status === "user") return res.redirect(ROUTE.userProfile);
+
+    if (req.body.user.status == "admin") return res.redirect(ROUTE.admin);
+
 });
 
-app.post("/signup", async (req, res) => {
+app.post(ROUTE.signup, async (req, res) => {
     
     const salt = await bcrypt.genSalt(10);
 
@@ -34,19 +41,48 @@ app.post("/signup", async (req, res) => {
         status = "admin";
     }
 
-    console.log(status)
+    // Is the user a guest with a cookie containing a cart?
+    const token = req.cookies.jsonwebtoken;
 
-    await new User({
-        email: req.body.email,
-        username: req.body.username,
-        password: hashPassword,
-        status: status
-    }).save();
+    if (token) {
+        
+        // Start here on monday.
+        const user = jwt.verify(token, config.secretKey);
+
+        console.log("user from cookie ->", user);
+
+        const cart = [];
+        
+        cart.push(user.cart);
     
-    const users = await User.find(); // or find (worked)?
-    console.log(users);
-    // res.redirect("userProfile");
-    res.redirect(VIEW.login);
+        const UserFromGuest = await new User({
+            email: req.body.email,
+            username: req.body.username,
+            password: hashPassword,
+            status: status,
+            cart: cart
+        }).save();
+        
+        const newUserFromGuest = await User.findOne({ username: UserFromGuest.username });
+        console.log("newUser from Guest ->", newUserFromGuest);
+
+        return res.redirect(VIEW.login);
+        
+    } else {
+    
+        const user = await new User({
+            email: req.body.email,
+            username: req.body.username,
+            password: hashPassword,
+            status: status
+        }).save();
+        
+        const newUser = await User.findOne({ username: user.username });
+        console.log("newUser ->", newUser);
+        
+        res.redirect(VIEW.login);
+
+    }
 
 });
 
