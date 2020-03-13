@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout page</title>
+</head>
+<body>
+
+    <h1>Checkout page</h1>
+    <br />
+    <p><%= user.cart %></p>
+    
+    <!-- input form for user info -->
+    <!-- payment methods -->
+    <form action="/confirmation" method="POST">
+        <button type="submit">Confirm payment</button>
+    </form>
+
+</body>
+</html>
