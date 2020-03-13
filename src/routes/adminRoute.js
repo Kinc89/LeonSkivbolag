@@ -5,6 +5,7 @@ const { ROUTE, VIEW } = require("./variables");
 const Album = require("../../model/album");
 const getLastFmData = require('../functions/getLastFmData');
 const checkIfAlbumExists = require('../functions/checkIfAlbumExists');
+const setPrice = require('../functions/setPrice');
 
 let user;
 
@@ -22,7 +23,6 @@ app.post(ROUTE.admin, async (req, res) => {
     
     // send to the getLastFmData artist and album strings to fetch data on the album
     const data = await getLastFmData(artist, album);
-
 
     if (data.error) {
         res.render(VIEW.admin, { user: undefined, invalidAlbum: false, albumAdded: false, existingAlbum: false, error: true });
@@ -59,13 +59,20 @@ app.post(ROUTE.admin, async (req, res) => {
         const indexOfLink = descriptionFullVersion.indexOf("<a");
         const descriptionShortVersion = descriptionFullVersion.substring(0, indexOfLink).trimEnd();
         description = descriptionShortVersion;
+
+        // set price
+        const calculatedPrice = await setPrice(data.album.listeners);
+
+        console.log(calculatedPrice);
     
         const newAlbum = await new Album({
             name: data.album.name,
             artist: data.album.artist,
+            price: calculatedPrice,
             released: releaseDate,
             description: description,
-            imgUrl: imgUrl
+            imgUrl: imgUrl,
+            numListeners: data.album.listeners
         }).save();
 
         const newAlbumInDb = await Album.findOne({ _id: newAlbum._id });

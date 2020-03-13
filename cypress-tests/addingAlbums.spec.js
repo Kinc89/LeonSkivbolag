@@ -9,7 +9,7 @@ context("Admin page", () => {
         
         cy.get('#urlLastFm').type('https://www.last.fm/music/Christine+and+the+Queens/Chris').should('have.value', 'https://www.last.fm/music/Christine+and+the+Queens/Chris');
         cy.get('#post-album-form').submit();
-        cy.get('#urlLastFm').type('https://www.last.fm/music/The+Knife/Silent+Shout').should('have.value', 'https://www.last.fm/music/The+Knife/Silent+Shout');
+        cy.get('#urlLastFm').type('https://www.last.fm/music/Madonna/The+Immaculate+Collection').should('have.value', 'https://www.last.fm/music/Madonna/The+Immaculate+Collection');
         cy.get('#post-album-form').submit();
         cy.get('#urlLastFm').type('https://www.last.fm/music/The+Beatles/Abbey+Road').should('have.value', 'https://www.last.fm/music/The+Beatles/Abbey+Road');
         cy.get('#post-album-form').submit();
