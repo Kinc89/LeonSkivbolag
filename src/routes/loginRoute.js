@@ -11,9 +11,13 @@ const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const verifyToken = require("../middlewares/verifyToken");
 
-app.get(ROUTE.login, (req, res) => {
+app.get(ROUTE.login, verifyToken, (req, res) => {
 
-    res.render(VIEW.login, { foundUser: true, invalidUser: false });
+    if (!req.validCookie || req.validCookie.user.status === "guest") return res.render(VIEW.login, { foundUser: true, invalidUser: false });
+
+    if (req.validCookie.user.status === "user") return res.redirect(ROUTE.userProfile);
+
+    if (req.validCookie.user.status == "admin") return res.redirect(ROUTE.admin);
 
 });
 
@@ -22,7 +26,7 @@ app.post(ROUTE.login, async (req, res) => {
     const user = await User.findOne({ username: req.body.username });
     console.log("USER IS ->", user);
 
-    if (!user) return res.render(VIEW.login, { foundUser: false });
+    if (!user) return res.render(VIEW.login, { foundUser: false, invalidUser: false });
 
     // compare with database info
     const validUser = await bcrypt.compare(req.body.password, user.password); // true?
@@ -34,9 +38,7 @@ app.post(ROUTE.login, async (req, res) => {
         if (err) return res.redirect("/login");
 
         if (token) {
-            console.log(token);
-            // cookie-parser must be installed and required in index.js for that to work
-            
+
             if (!req.cookie) {
                 res.cookie("jsonwebtoken", token, { maxAge: 3600000, httpOnly: true })
             };
