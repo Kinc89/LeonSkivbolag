@@ -40,6 +40,7 @@ const checkoutRoute = require("./src/routes/checkoutRoute");
 const confirmationRoute = require("./src/routes/confirmationRoute");
 const logoutRoute = require("./src/routes/logoutRoute");
 const error403Route = require("./src/routes/error403Route");
+const removeItemRoute = require("./src/routes/removeItemRoute");
 // routes use
 app.use(mainRoute);
 app.use(adminRoute);
@@ -53,6 +54,7 @@ app.use(checkoutRoute);
 app.use(confirmationRoute);
 app.use(logoutRoute);
 app.use(error403Route);
+app.use(removeItemRoute);
 
 // Start servern
 const dbOptions = { useUnifiedTopology: true, useNewUrlParser: true, useCreateIndex: true };
