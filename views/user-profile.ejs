@@ -3,9 +3,8 @@
     <%- include('header') %>
 
 <h1>skivbolaget: userprofile</h1>
-    <a href="/cart" style="color:white">your cart</a><br />
 
-    <p>Welcome <%= user.username %></p>
+    <p>Welcome <%= user.username %>, you have <%= user.cart.length %> items in <a href="/cart" style="color:white">your cart</a>.</p>
 
     <p><a href="/logout" style="color: lightcoral">Log out</a></p>
 

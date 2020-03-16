@@ -27,9 +27,10 @@
         <p>Hello <%= user.username %>, here is the content of your cart:</p>
         <ul>
         <% user.cart.forEach(album => { %>    
-                <li><strong>Album name: <%= album.name %></strong></li>
-                <li>Artist of the album: <%= album.artist %></li>
-                <li>Price: <%= album.price %></li>
+                <li><strong><%= album.name %></strong></li>
+                <li><%= album.artist %></li>
+                <li><%= album.price %> SEK</li>
+                <li><a href="/removeitem/<%= album._id %>" style="color: lightgreen">Remove item</a></li>
                 <br />
         <% }); %>
         </ul>
