@@ -1,18 +1,51 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Skivbolaget : CART</title>
-</head>
+<%- include('head') %>
 <body>
+    <%- include('header') %>
+
     <h1>Cart</h1>
 
-    <p>Welcome <strong><%= user.username %></strong> to your cart. You have <%= user.cart.length %> items in your cart.</p>
+    <% if (emptyCart) { %>
+        <i>Cart is empty</i>
+    <% } %>
 
-    <form action="/checkout" method="get">
-        <button type="submit">here will be a working checkout button</button>
-    </form>
+    <% if (user.status == "guest") { %>
+        <p>Hello <%= user.status %>, here is the content of your cart:</p>
+        <ul>
+        <% user.cart.forEach(album => { %>    
+                <li><strong>Album name: <%= album.name %></strong></li>
+                <li>Artist of the album: <%= album.artist %></li>
+                <li>Price: <%= album.price %></li>
+                <br />
+        <% }); %>
+        </ul>
+
+        <p>You are not a registered user, please <a href="/signup">sign up</a> and login to proceed to checkout and place your order.</p>
+
+    <% } %>
+
+    <% if (user.status == "user") { %>
+        <p>Hello <%= user.username %>, here is the content of your cart:</p>
+        <ul>
+        <% user.cart.forEach(album => { %>    
+                <li><strong>Album name: <%= album.name %></strong></li>
+                <li>Artist of the album: <%= album.artist %></li>
+                <li>Price: <%= album.price %></li>
+                <br />
+        <% }); %>
+        </ul>
+
+        <form action="/checkout" method="get">
+            <button type="submit">Proceed to checkout</button>
+        </form>
+    <% } %>
+    
+    <% if (user.status == "admin") { %>
+        <p>Hello <%= user.username %>, you have the status of <%= user.status %> and don't have the possibility to add item to your cart. Please go to:</p>        
+        <ul>
+            <li><a href="/">Main.</a></li>
+            <li><a href="/admin">Admin page.</a></li>
+        </ul>
+    <% } %>
 
 </body>
 </html>

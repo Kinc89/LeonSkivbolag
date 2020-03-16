@@ -2,6 +2,9 @@ const express = require("express");
 const app = express.Router();
 const { ROUTE, VIEW } = require("./variables");
 
+// middleware
+const verifyToken = require("../middlewares/verifyToken");
+
 const Album = require("../../model/album");
 const getLastFmData = require('../functions/getLastFmData');
 const checkIfAlbumExists = require('../functions/checkIfAlbumExists');
@@ -9,8 +12,10 @@ const setPrice = require('../functions/setPrice');
 
 let user;
 
-app.get(ROUTE.admin, async (req, res) => {
+app.get(ROUTE.admin, verifyToken, (req, res) => {
+
     res.render(VIEW.admin, { user, invalidAlbum: false, albumAdded: false, existingAlbum: false, error: false });
+
 });
 
 app.post(ROUTE.admin, async (req, res) => {

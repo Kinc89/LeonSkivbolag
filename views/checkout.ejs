@@ -1,0 +1,17 @@
+<%- include('head') %>
+<body>
+    <%- include('header') %>
+
+    <h1>Checkout page</h1>
+    <br />
+    <!-- here will be user cart -->
+    <p><%= user %></p>
+    
+    <!-- input form for user info -->
+    <!-- payment methods -->
+    <form action="/confirmation" method="POST">
+        <button type="submit">Confirm payment</button>
+    </form>
+
+</body>
+</html>

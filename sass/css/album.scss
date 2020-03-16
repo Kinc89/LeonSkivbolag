@@ -1,6 +1,3 @@
-$break-small: 320px;
-$break-medium: 600px;
-$break-large: 1200px;
 
 body {
     background-color: rgb(41, 41, 41);
@@ -8,6 +5,7 @@ body {
     font-family: 'Roboto Condensed', sans-serif;
     margin: 0;
 }
+
 header {
     display: grid;
     width: 100%;
@@ -108,67 +106,54 @@ header {
           }
     }
 }
-
-//* scss för tablet
-@media screen and (min-width: $break-medium) {
-
-header {
-    #logo-container {
-        height: 65%;
+.albumInfo {
+    text-align: center;
+    width: 1fr;
+    margin-left: 15px;
+    margin-right: 15px;
+    // .fullAlbum {
+    //     box-sizing: border-box;
+    //     border-radius: 6px;
+    // }
+    // .price {
+    //     border-radius: 5px;
+    //     box-sizing: border-box;
+    //     border-radius: 6px;
+    // }
+    .musicPlayer {
+        margin-top: 15px;
     }
-}
-.sortContainer {
-    display: flex;
-    font-size: 1.2em;
-
-    .filter {
-        margin-left: auto;
-        display: flex;
-    }
-
-    .sort {
-        justify-content: flex-end;
-        margin-left: 10px;
-        margin-right: 15px;
-        display: inline;
-        text-align: right;
-    }
-}
-
-.container {
-    display: grid;
-    grid-template-columns: repeat(2,1fr);   
-}
-}
-//* scss för desktop
-@media screen and (min-width: $break-large) {
-
-    header {
-        height: 60px;
-        grid-template-rows: 100%;
-        #logo-container {
-            height: 70%;
-        }
-        .header-icon {
-            font-size: 1.5vw;
-        }
-    }
-    .sortContainer{
-        display: flex;
+    .curator {
+        box-sizing: border-box;
+        background: #0F5259;
+        border-radius: 6px;
+        margin-top: 5px;
         font-size: 1.2em;
-        .filter{
-            margin-left: auto;
-            display: flex;
-        }
-        .sort{
-            justify-content: flex-end;
-            margin-left: 10px;
-            margin-right: 15px;
-            display: inline;
-            text-align: right;
-        }
     }
-    .container {
-        grid-template-columns: repeat(3,1fr);
+    .curatorsNote {
+        border: 1px solid #EEEEEE;
+        box-sizing: border-box;
+        border-radius: 6px;
+        margin-top: 9px;
+        font-size: 1em;
+        font-weight: lighter;
+    }
+    .aboutAlbum {
+        box-sizing: border-box;
+        background: #0F5259;
+        border-radius: 6px;
+        margin-top: 9px;
+        font-size: 1.2em;
+    }
+    .albumInfo {
+        border: 1px solid #EEEEEE;
+        box-sizing: border-box;
+        border-radius: 6px;
+        margin-top: 9px;
+        font-size: 1em;
+        font-weight: lighter;
+    }
+    p {
+        margin: 6px;
     }
 }
