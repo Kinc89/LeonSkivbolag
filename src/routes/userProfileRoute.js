@@ -8,9 +8,9 @@ const verifyToken = require("../middlewares/verifyToken");
 
 app.get(ROUTE.userProfile, verifyToken, async (req, res) => {
 
-    console.log("REQ BODY USER ->", req.body.user);
+    console.log("REQ BODY USER ->", req.validCookie.user);
 
-    const user = await User.findById({ _id: req.body.user._id });
+    const user = await User.findById({ _id: req.validCookie.user._id });
 
     console.log(user);
 

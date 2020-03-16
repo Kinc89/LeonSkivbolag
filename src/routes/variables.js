@@ -10,7 +10,9 @@ const ROUTE = {
     userProfile: '/userProfile',
     cart: '/cart',
     checkout: '/checkout',
-    confirmation: '/confirmation'
+    confirmation: '/confirmation',
+    logout: '/logout',
+    error403: '/error403'
 };
 
 // view variables
@@ -24,7 +26,9 @@ const VIEW = {
     userProfile: 'user-profile',
     cart: 'cart',
     checkout: 'checkout',
-    confirmation: 'confirmation'
+    confirmation: 'confirmation',
+    logout: 'logout',
+    error403: 'error-403'
 };
 
 module.exports = { ROUTE, VIEW };

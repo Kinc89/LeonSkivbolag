@@ -7,8 +7,7 @@
     <% if (emptyCart) { %>
         <i>Cart is empty</i>
     <% } %>
-        
-       
+
     <% if (user.status == "guest") { %>
         <p>Hello <%= user.status %>, here is the content of your cart:</p>
         <ul>
@@ -20,7 +19,7 @@
         <% }); %>
         </ul>
 
-    <p>You are not a registered user, please <a href="/signup">sign up</a> and login to proceed to checkout and place your order.</p>
+        <p>You are not a registered user, please <a href="/signup">sign up</a> and login to proceed to checkout and place your order.</p>
 
     <% } %>
 
@@ -35,9 +34,9 @@
         <% }); %>
         </ul>
 
-    <form action="/checkout" method="get">
-        <button type="submit">Proceed to checkout</button>
-    </form>
+        <form action="/checkout" method="get">
+            <button type="submit">Proceed to checkout</button>
+        </form>
     <% } %>
     
     <% if (user.status == "admin") { %>
@@ -47,7 +46,6 @@
             <li><a href="/admin">Admin page.</a></li>
         </ul>
     <% } %>
-
 
 </body>
 </html>

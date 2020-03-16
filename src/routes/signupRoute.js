@@ -14,74 +14,79 @@ const User = require("../../model/user");
 
 app.get(ROUTE.signup, verifyToken, (req, res) => {
 
-    if (!req.body.user || req.body.user.status === "guest") return res.render(VIEW.signup, { foundUser: false });
+    if (!req.validCookie || req.validCookie.user.status === "guest") return res.render(VIEW.signup, { foundUser: false });
 
-    if (req.body.user.status === "user") return res.redirect(ROUTE.userProfile);
+    if (req.validCookie.user.status === "user") return res.redirect(ROUTE.userProfile);
 
-    if (req.body.user.status == "admin") return res.redirect(ROUTE.admin);
+    if (req.validCookie.user.status == "admin") return res.redirect(ROUTE.admin);
 
 });
 
-app.post(ROUTE.signup, async (req, res) => {
+app.post(ROUTE.signup, verifyToken, async (req, res) => {
     
-    const salt = await bcrypt.genSalt(10);
+    if (!req.validCookie) {
+       
+        // generate salt and hash the password input
+        const salt = await bcrypt.genSalt(10);
+        const hashPassword = await bcrypt.hash(req.body.password, salt);
 
-    const hashPassword = await bcrypt.hash(req.body.password, salt);
+        // Does user already exist in DB?
+        const foundUser = await User.exists({ username: req.body.username })
+        if (foundUser) { 
+            res.render(VIEW.signup, { foundUser: true });
+        }
 
-    // Does user already exist in DB?
-    const foundUser = await User.exists({ username: req.body.username })
-    if (foundUser) { 
-        res.render(VIEW.signup, { foundUser: true });
-    }
-    
-    // Can the new user become an admin?
-    let status;
-    const adminUsers = ["julia", "balthazar", "leon", "yamandu", "oskar"];
-    if (adminUsers.includes(req.body.username)) {
+        // Can the new user become an admin?
+        let status;
+        const adminUsers = ["julia", "balthazar", "leon", "yamandu", "oskar"];
+        if (adminUsers.includes(req.body.username)) {
         status = "admin";
-    }
+        }
 
-    // Is the user a guest with a cookie containing a cart?
-    const token = req.cookies.jsonwebtoken;
-
-    if (token) {
-        
-        // Start here on monday.
-        const user = jwt.verify(token, config.secretKey);
-
-        console.log("user from cookie ->", user);
-
-        const cart = [];
-        
-        cart.push(user.cart);
-    
-        const UserFromGuest = await new User({
+        // Create an user or admin user in the DB
+        const user = await new User({
             email: req.body.email,
             username: req.body.username,
             password: hashPassword,
-            status: status,
-            cart: cart
+            status: status // status is either undefined or 'admin'
         }).save();
-        
-        const newUserFromGuest = await User.findOne({ username: UserFromGuest.username });
-        console.log("newUser from Guest ->", newUserFromGuest);
 
+        console.log("USER (ADMIN OR USER) ->", user);
         return res.redirect(VIEW.login);
-        
+
     } else {
+
+        // WHEN IT'S A GUEST (VISITOR WITH COOKIE)
+        console.log("req.validCookie.user -> ", req.validCookie.user);
+        console.log("req.validCookie -> ", req.validCookie);
+
+        const cart = [];
+        const cartFromCookieArray = req.validCookie.user.cart;
+        console.log("cartFromCookieArray -> ", cartFromCookieArray);
+        cartFromCookieArray.forEach(item => { 
+            cart.push(item);
+        });
+        console.log("LOADED CART ->", cart.name);
+
+        // generate salt and hash the password input
+        const salt = await bcrypt.genSalt(10);
+        const hashPassword = await bcrypt.hash(req.body.password, salt);
+
+        // Does user already exist in DB?
+        const foundUser = await User.exists({ username: req.body.username })
+        if (foundUser) { 
+            res.render(VIEW.signup, { foundUser: true });
+        }
     
         const user = await new User({
             email: req.body.email,
             username: req.body.username,
             password: hashPassword,
-            status: status
+            cart: cart
         }).save();
         
-        const newUser = await User.findOne({ username: user.username });
-        console.log("newUser ->", newUser);
-        
-        res.redirect(VIEW.login);
-
+        console.log("USER FROM GUEST ->", user);
+        return res.redirect(VIEW.login);
     }
 
 });
