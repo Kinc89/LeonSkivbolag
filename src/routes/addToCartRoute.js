@@ -12,8 +12,6 @@ const verifyToken = require("../middlewares/verifyToken");
 
 app.get(ROUTE.addToCart, verifyToken, async (req, res) => {
 
-    console.log("req.validCookie -> ", req.validCookie)
-
     // in the case of no cookie (no user logged in)
     if (!req.validCookie) {
 
@@ -33,20 +31,20 @@ app.get(ROUTE.addToCart, verifyToken, async (req, res) => {
             }
         });
         return
-        
+
     } else {
 
         // in the case that the user is already logged in (there is a cookie)
         const user = await User.findById({ _id: req.validCookie.user._id });
         const albumToAdd = await Album.findById({ _id: req.params.id });
-
-        console.log("USER ->", user);
         
-        // user.cart.forEach(item => {
-        //     user.cart.push(albumToAdd);
-        // });
+        console.log("USER -> ", user.cart);
 
-        await user.save();
+        user.cart.push(albumToAdd);
+
+        const updatedUser = await user.save();
+
+        console.log("updatedUser", updatedUser);
 
         res.redirect(ROUTE.root);
 
