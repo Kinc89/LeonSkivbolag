@@ -1,52 +1,60 @@
-<%- include('head') %>
+<%- include('partials/head.ejs') %>
+
 <body>
-    <%- include('header') %>
+    <%- include('partials/header.ejs') %>
+    <div class="cart">
+        <h1>Cart</h1>
 
-    <h1>Cart</h1>
-
-    <% if (emptyCart) { %>
+        <% if (emptyCart) { %>
         <i>Cart is empty</i>
-    <% } %>
 
-    <% if (user.status == "guest") { %>
+        <% } %>
+
+        <% if (user.status == "guest") { %>
+
         <p>Hello <%= user.status %>, here is the content of your cart:</p>
         <ul>
-        <% user.cart.forEach(album => { %>    
-                <li><strong>Album name: <%= album.name %></strong></li>
-                <li>Artist of the album: <%= album.artist %></li>
-                <li>Price: <%= album.price %></li>
-                <br />
-        <% }); %>
+            <% user.cart.forEach(album => { %>
+            <li><strong>Album name: <%= album.name %></strong></li>
+            <li>Artist of the album: <%= album.artist %></li>
+            <li>Price: <%= album.price %></li>
+            <br />
+            <% }); %>
         </ul>
+        <!-- Detta funkar inte? Tror jag kan komma in på cart sidan även om jag inte är registrerad, misstänker att denna P paragraf ska kicka igång då och be oss logga in -->
+        <p>You are not a registered user, please <a href="/signup">sign up</a> and login to proceed to checkout and
+            place
+            your order.</p>
 
-        <p>You are not a registered user, please <a href="/signup">sign up</a> and login to proceed to checkout and place your order.</p>
+        <% } %>
 
-    <% } %>
-
-    <% if (user.status == "user") { %>
+        <% if (user.status == "user") { %>
         <p>Hello <%= user.username %>, here is the content of your cart:</p>
         <ul>
-        <% user.cart.forEach(album => { %>    
-                <li><strong><%= album.name %></strong></li>
-                <li><%= album.artist %></li>
-                <li><%= album.price %> SEK</li>
-                <li><a href="/removeitem/<%= album._id %>" style="color: lightgreen">Remove item</a></li>
-                <br />
-        <% }); %>
-        </ul>
+            <% user.cart.forEach(album => { %>
+            <li><strong><%= album.name %></strong></li>
+            <li><%= album.artist %></li>
+            <li><%= album.price %> SEK</li>
+            <li><a href="/removeitem/<%= album._id %>" style="color: lightgreen">Remove item</a></li>
+            <br />
+            <% }); %>
 
-        <form action="/checkout" method="get">
-            <button type="submit">Proceed to checkout</button>
-        </form>
-    <% } %>
-    
-    <% if (user.status == "admin") { %>
-        <p>Hello <%= user.username %>, you have the status of <%= user.status %> and don't have the possibility to add item to your cart. Please go to:</p>        
-        <ul>
-            <li><a href="/">Main.</a></li>
-            <li><a href="/admin">Admin page.</a></li>
         </ul>
+    </div>
+    <form action="/checkout" method="get">
+        <button type="submit">Proceed to checkout</button>
+    </form>
+    <% } %>
+
+    <% if (user.status == "admin") { %>
+    <p>Hello <%= user.username %>, you have the status of <%= user.status %> and don't have the possibility to add item
+        to your cart. Please go to:</p>
+    <ul>
+        <li><a href="/">Main.</a></li>
+        <li><a href="/admin">Admin page.</a></li>
+    </ul>
     <% } %>
 
 </body>
+
 </html>
