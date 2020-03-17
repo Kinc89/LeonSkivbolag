@@ -1,4 +1,6 @@
-<%- include('head') %>
+<%- include ("head.ejs") %>
+<%- include ("header.ejs") %>
+
 <body>
     <%- include('header') %>
 
@@ -9,26 +11,30 @@
     </form>
 
     <% if (error) { %>
-        <p>We can't handle your request, please choose another album without the following characters: "…".</p>
+    <p>We can't handle your request, please choose another album without the following characters: "…".</p>
     <% } %>
 
     <% if (invalidAlbum) { %>
-        <p>The data from Last.fm about the album '<%= data.album.name %>' by artist <i><%= data.album.artist %></i> doesn't contain enough information to be added to Skivbolaget.</p>
+    <p>The data from Last.fm about the album '<%= data.album.name %>' by artist <i><%= data.album.artist %></i> doesn't
+        contain enough information to be added to Skivbolaget.</p>
     <% } %>
 
     <% if (albumAdded) { %>
-        <p>The data from Last.fm about the album '<%= newAlbumInDb.name %>' by artist <i><%= newAlbumInDb.artist %></i> has been successfully added to Skivbolaget.</p>
+    <p>The data from Last.fm about the album '<%= newAlbumInDb.name %>' by artist <i><%= newAlbumInDb.artist %></i> has
+        been successfully added to Skivbolaget.</p>
     <% } %>
 
     <% if (existingAlbum) { %>
-        <p>The album '<%= data.album.name %>' by artist <i><%= data.album.artist %></i> already exists in the collection of Skivbolaget.</p>
+    <p>The album '<%= data.album.name %>' by artist <i><%= data.album.artist %></i> already exists in the collection of
+        Skivbolaget.</p>
     <% } %>
 
     <% if (user) { %>
-        <%= user %>
+    <%= user %>
     <% } %>
 
     <p><a href="/logout" style="color: lightcoral">Log out</a></p>
 
 </body>
+
 </html>

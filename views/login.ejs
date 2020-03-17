@@ -1,7 +1,9 @@
-<%- include('head') %>
+<%- include ("head.ejs") %>
+<%- include ("header.ejs") %>
+
 <body>
     <%- include('header') %>
-    
+
     <h1>Log-in page</h1>
 
     <form action="/login" method="post" id="post-login-form">
@@ -12,19 +14,20 @@
         <br />
         <button type="submit">Log in</button>
 
-        <% if (invalidUser) { %> 
-            <p>The username and password doesn't match. Please try again.</p>
+        <% if (invalidUser) { %>
+        <p>The username and password doesn't match. Please try again.</p>
         <% } %>
 
-        <% if (!invalidUser) { %> 
-            <% if (!foundUser) { %> 
-                <p>The user doesn't exist. Please sign up at <a href="/signup">Sign-up page</a>.</p>
-            <% } else { %>
-                <p>If you don't have an account yet, please sign up on <a href="/signup">Sign-up page</a></p>
-            <% } %>
+        <% if (!invalidUser) { %>
+        <% if (!foundUser) { %>
+        <p>The user doesn't exist. Please sign up at <a href="/signup">Sign-up page</a>.</p>
+        <% } else { %>
+        <p>If you don't have an account yet, please sign up on <a href="/signup">Sign-up page</a></p>
+        <% } %>
         <% } %>
 
     </form>
 
 </body>
+
 </html>

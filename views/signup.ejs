@@ -1,7 +1,9 @@
-<%- include('head') %>
+<%- include ("head.ejs") %>
+<%- include ("header.ejs") %>
+
 <body>
     <%- include('header') %>
-    
+
     <h1>Sign-up page</h1>
 
     <form action="/signup" method="post">
@@ -14,15 +16,17 @@
         <br />
         <button type="submit">Sign Up</button>
 
-        <% if (foundUser) { %> 
-            <p>The user already exists. Please go to <a href="/login">Login page</a> or choose another e-mail and username.</p>
+        <% if (foundUser) { %>
+        <p>The user already exists. Please go to <a href="/login">Login page</a> or choose another e-mail and username.
+        </p>
         <% } %>
-    
+
         <p>Do you already have an account? <a href="/login">Login page</a></p>
 
 
-    
+
     </form>
 
 </body>
+
 </html>
