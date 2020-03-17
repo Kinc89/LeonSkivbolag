@@ -3,7 +3,7 @@ const app = express.Router();
 const { ROUTE, VIEW } = require("./variables");
 const config = require("../../config/config");
 
-const Album = require("../../model/album");
+// const Album = require("../../model/album");
 const User = require("../../model/user");
 
 const jwt = require("jsonwebtoken");
@@ -12,19 +12,12 @@ const checkUser = require("../middlewares/checkUser");
 
 app.get(ROUTE.removeItem, verifyToken, checkUser, async (req, res) => {
 
-
         // work on that tomorrow tuesday
-        const user = await User.findById({ _id: req.validCookie.user._id });
-
-        const itemToRemove = await Album.findById({ _id: req.params.id });
+        // const user = await User.findById({ _id: req.validCookie.user._id });
         
-        const pos = user.cart.indexOf(itemToRemove._id);
+        const removedItem = await User.findByIdAndRemove({ _id: req.params.id });
         
-        user.cart.splice(pos, 1);
-
-        const updatedUser = await user.save();
-
-        console.log(updatedUser);
+        console.log(removedItem);
 
         res.redirect(ROUTE.cart);
 

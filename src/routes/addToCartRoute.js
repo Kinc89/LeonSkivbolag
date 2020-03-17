@@ -37,14 +37,11 @@ app.get(ROUTE.addToCart, verifyToken, async (req, res) => {
         // in the case that the user is already logged in (there is a cookie)
         const user = await User.findById({ _id: req.validCookie.user._id });
         const albumToAdd = await Album.findById({ _id: req.params.id });
-        
-        console.log("USER -> ", user.cart);
 
-        user.cart.push(albumToAdd);
+        await user.addToCart(albumToAdd);
 
-        const updatedUser = await user.save();
-
-        console.log("updatedUser", updatedUser);
+        const updatedUser = await User.findById({ _id: req.validCookie.user._id });
+        console.log(updatedUser);
 
         res.redirect(ROUTE.root);
 

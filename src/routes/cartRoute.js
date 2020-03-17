@@ -19,7 +19,9 @@ app.get(ROUTE.cart, verifyToken, async (req, res) => {
         return res.render(VIEW.cart, { emptyCart: false, user })
     }
     
-    const user = await User.findById({ _id: req.validCookie.user._id });
+    const user = await User.find({ _id: req.validCookie.user._id }).populate("cart");
+
+    console.log(user);
 
     res.render(VIEW.cart, { emptyCart: false, user });
 });
