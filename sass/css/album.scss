@@ -1,37 +1,6 @@
-
-body {
-    background-color: rgb(41, 41, 41);
-    color: #e0e0e0;
-    font-family: 'Roboto Condensed', sans-serif;
-    margin: 0;
-}
-
-header {
-    display: grid;
-    width: 100%;
-    height: 20%;
-    grid-template-columns: [menu] 1fr [logo] 5fr [user] 1fr [shoppingCart] 1fr;
-    align-items: center;
-    text-align: center;
-    background-color: rgb(66, 66, 66);
-    #logo-container {
-        height:80%;
-        vertical-align: middle;
-        img{
-            height:100%;
-        }
-        #logo-small {
-            // padding-top: 4px;
-            max-width: 100%;
-        }
-    }
-    .header-icon {
-        font-size: 3vw;
-    }
-    i {
-        color: #e0e0e0;
-    }
-}
+$break-small: 320px;
+$break-medium: 600px;
+$break-large: 1200px;
 .sortContainer{
     display: flex;
     font-size: 1.2em;
@@ -53,7 +22,6 @@ header {
         width: 100%;
         grid-template-columns: 15px repeat(12, 1fr) 15px;
         grid-template-rows: repeat(15fr);
-    }
     .image {
         margin-top: 20px;
         grid-column: 2   / 14;
@@ -101,9 +69,14 @@ header {
             transition-duration: 0.4s;
           }
           button:hover {
-            background-color: rgb(29, 112, 12); /* Green */
+            background-color: rgb(29, 112, 12);
             color: white;
           }
+        }
+    }
+    .musicPlayer {
+        height: 395px;
+        margin: 10px 15px 10px 15px
     }
 }
 .albumInfo {
@@ -111,18 +84,6 @@ header {
     width: 1fr;
     margin-left: 15px;
     margin-right: 15px;
-    // .fullAlbum {
-    //     box-sizing: border-box;
-    //     border-radius: 6px;
-    // }
-    // .price {
-    //     border-radius: 5px;
-    //     box-sizing: border-box;
-    //     border-radius: 6px;
-    // }
-    .musicPlayer {
-        margin-top: 15px;
-    }
     .curator {
         box-sizing: border-box;
         background: #0F5259;
@@ -145,7 +106,7 @@ header {
         margin-top: 9px;
         font-size: 1.2em;
     }
-    .albumInfo {
+    .albumWiki {
         border: 1px solid #EEEEEE;
         box-sizing: border-box;
         border-radius: 6px;
@@ -155,5 +116,27 @@ header {
     }
     p {
         margin: 6px;
+    }
+}
+@media screen and (min-width: $break-medium) {
+    .container {
+        display: grid;
+        grid-template-columns: repeat(2,1fr);   
+        .musicPlayer{
+            padding: 15px;
+            margin: 20px 15px 0px 15px;
+            height: 100%;
+            iframe{
+                
+                height: 100%;
+            }
+        }
+        
+    }
+}
+
+@media screen and (min-width: $break-large) {
+    .musicPlayer{
+        height: 100%;
     }
 }

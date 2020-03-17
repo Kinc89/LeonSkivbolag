@@ -1,10 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sign-up page</title>
-</head>
+<%- include ("head.ejs") %>
+<%- include ("header.ejs") %>
+
 <body>
     <h1>Sign-up page</h1>
 
@@ -18,15 +14,17 @@
         <br />
         <button type="submit">Sign Up</button>
 
-        <% if (foundUser) { %> 
-            <p>The user already exists. Please go to <a href="/login">Login page</a> or choose another e-mail and username.</p>
+        <% if (foundUser) { %>
+        <p>The user already exists. Please go to <a href="/login">Login page</a> or choose another e-mail and username.
+        </p>
         <% } %>
-    
+
         <p>Do you already have an account? <a href="/login">Login page</a></p>
 
 
-    
+
     </form>
 
 </body>
+
 </html>
