@@ -3,7 +3,7 @@ $break-medium: 768px;
 $break-large: 1200px;
 
 body {
-    background-color: rgb(138, 138, 138);
+    background-color: rgb(41, 41, 41);
     color: #e0e0e0;
     font-family: 'Roboto Condensed', sans-serif;
     margin: 0;
@@ -16,7 +16,7 @@ header {
     grid-template-columns: [menu] 1fr [logo] 5fr [user] 1fr [shoppingCart] 1fr;
     align-items: center;
     text-align: center;
-    background-color: rgb(46, 46, 46);
+    background-color: rgb(66, 66, 66);
     #logo-container {
         height:80%;
         vertical-align: middle;
@@ -65,10 +65,36 @@ header {
         margin-top: 20px;
         grid-column: 2   / 14;
         grid-row: 2 / 2;
+        position: relative; 
 
         img {
             max-width: 100%;
+            
+            -webkit-filter: brightness(100%);
+            
+
+            .image:hover{
+                -webkit-filter: brightness(50%);
+                -webkit-transition: all 0.5s ease;
+                -moz-transition: all 0.5s ease;
+                -o-transition: all 0.5s ease;
+                -ms-transition: all 0.5s ease;
+                transition: all 0.5s ease;
+                .hover-text{
+                    position: absolute;
+                    top: 10px;
+                    left: 10px;
+                    display: block;
+                }
+    
+            }
         }
+        .hover-text{
+            display: none;
+        }
+        
+
+
     }
     .artist {
         grid-column: 2 / 9;
@@ -155,11 +181,7 @@ header {
 //* scss för tablet
 @media screen and (min-width: $break-medium) {
 
-body {
-    background-color:rgb(238, 6, 6);
-    color: #e0e0e0;
-    font-family: 'Roboto Condensed', sans-serif;
-}
+
 header {
     #logo-container {
         height: 65%;
@@ -185,7 +207,7 @@ header {
 }
 .container {
     display: grid;
-    grid-template-columns: repeat(3,1fr);
+    grid-template-columns: repeat(2,1fr);
 }
 .albumContainer {
     text-align: center;
@@ -242,11 +264,7 @@ header {
 //* scss för desktop
 @media screen and (min-width: $break-large) {
 
-    body {
-        background-color:rgb(2, 255, 36);
-        color: #e0e0e0;
-        font-family: 'Roboto Condensed', sans-serif;
-    }
+   
     header {
         height: 60px;
         grid-template-rows: 100%;
