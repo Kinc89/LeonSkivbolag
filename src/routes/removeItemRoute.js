@@ -11,13 +11,13 @@ const verifyToken = require("../middlewares/verifyToken");
 const checkUser = require("../middlewares/checkUser");
 
 app.get(ROUTE.removeItem, verifyToken, checkUser, async (req, res) => {
+        
+        const user = await User.findById({ _id: req.validCookie.user._id });
 
-        // work on that tomorrow tuesday
-        // const user = await User.findById({ _id: req.validCookie.user._id });
-        
-        const removedItem = await User.findByIdAndRemove({ _id: req.params.id });
-        
-        console.log(removedItem);
+        await user.removeFromCart(req.params.id);
+
+        // user.cart.id({ _id: req.params.id }).remove();
+        // await user.save();
 
         res.redirect(ROUTE.cart);
 

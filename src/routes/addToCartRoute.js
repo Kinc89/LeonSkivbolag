@@ -32,7 +32,25 @@ app.get(ROUTE.addToCart, verifyToken, async (req, res) => {
         });
         return
 
-    } else {
+    } else if (req.validCookie.user.status == "guest") {
+        
+        const cart = req.validCookie.user.cart;
+        const albumToAdd = await Album.findById({ _id: req.params.id });
+        cart.push(albumToAdd);
+        const user = {
+            status: "guest",
+            cart: cart 
+        }
+        jwt.sign({ user }, config.secretKey, (err, token) => {
+            if (err) return res.redirect(ROUTE.root);
+            if (token) {
+                res.cookie("jsonwebtoken", token, { maxAge: 3600000, httpOnly: true })
+                return res.redirect(ROUTE.root);
+            }
+        });
+        return
+
+    } else {    
 
         // in the case that the user is already logged in (there is a cookie)
         const user = await User.findById({ _id: req.validCookie.user._id });

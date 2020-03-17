@@ -7,13 +7,26 @@ const userSchema = new Schema({
     password: { type: String, required: true },
     status: { type: String, enum: ["user", "admin"], default: "user" },
     cart: [{
-        itemId: { type: mongoose.Schema.Types.ObjectId, ref: 'Album' }
+        itemId: { type: mongoose.Schema.Types.ObjectId, ref: 'Album' },
+        name: { type: mongoose.Schema.Types.String, ref: 'Album' },
+        artist: { type: mongoose.Schema.Types.String, ref: 'Album' },
+        price: { type: mongoose.Schema.Types.Number, ref: 'Album' }        
     }],
     order: []
 })
 
 userSchema.methods.addToCart = function (item) {
-    this.cart.push({ itemId: item._id });
+    this.cart.push({ 
+        itemId: item._id,
+        name: item.name,
+        artist: item.artist,
+        price: item.price
+    });
+    return this.save();
+}
+
+userSchema.methods.removeFromCart = function (itemId) {
+    this.cart.id({ _id: itemId }).remove();
     return this.save();
 }
 
