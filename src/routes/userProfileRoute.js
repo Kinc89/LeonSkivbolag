@@ -4,15 +4,13 @@ const { ROUTE, VIEW } = require("./variables");
 
 const User = require("../../model/user");
 
-const verifyToken = require("./verifyToken");
+// middlewares
+const verifyToken = require("../middlewares/verifyToken");
+const checkUser = require("../middlewares/checkUser");
 
-app.get(ROUTE.userProfile, verifyToken, async (req, res) => {
+app.get(ROUTE.userProfile, verifyToken, checkUser, async (req, res) => {
 
-    console.log(req.body.user);
-
-    const user = await User.findById({ _id: req.body.user._id });
-
-    console.log(user);
+    const user = await User.findById({ _id: req.validCookie.user._id });
 
     res.render(VIEW.userProfile, { user });
 });

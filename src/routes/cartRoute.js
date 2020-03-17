@@ -2,20 +2,26 @@ const express = require("express");
 const app = express.Router();
 const { ROUTE, VIEW } = require("./variables");
 
-// needed?
-const Album = require("../../model/album");
 const User = require("../../model/user");
 
-const verifyToken = require("./verifyToken");
+const verifyToken = require("../middlewares/verifyToken");
 
 app.get(ROUTE.cart, verifyToken, async (req, res) => {
 
-    const user = await User.findById({ _id: req.body.user._id });
+    if (!req.validCookie) {
+        const user = { status: 'visitor' };
+        res.render(VIEW.cart, { emptyCart: true, user })
 
-    console.log(user);
-    console.log(user.cart.length)
+    }
+    
+    if (req.validCookie.user.status === "guest") {
+        const user = req.validCookie.user;
+        return res.render(VIEW.cart, { emptyCart: false, user })
+    }
+    
+    const user = await User.findById({ _id: req.validCookie.user._id });
 
-    res.render(VIEW.cart, { user });
+    res.render(VIEW.cart, { emptyCart: false, user });
 });
 
 module.exports = app;
