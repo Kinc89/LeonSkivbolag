@@ -2,6 +2,10 @@ const express = require("express");
 const app = express.Router();
 const { ROUTE, VIEW } = require("./variables");
 
+// middleware
+const verifyToken = require("../middlewares/verifyToken");
+const checkAdmin = require("../middlewares/checkAdmin");
+
 const Album = require("../../model/album");
 const getLastFmData = require('../functions/getLastFmData');
 const checkIfAlbumExists = require('../functions/checkIfAlbumExists');
@@ -9,11 +13,13 @@ const setPrice = require('../functions/setPrice');
 
 let user;
 
-app.get(ROUTE.admin, async (req, res) => {
+app.get(ROUTE.admin, verifyToken, checkAdmin, (req, res) => {
+
     res.render(VIEW.admin, { user, invalidAlbum: false, albumAdded: false, existingAlbum: false, error: false });
+
 });
 
-app.post(ROUTE.admin, async (req, res) => {
+app.post(ROUTE.admin, verifyToken, checkAdmin, async (req, res) => {
     
      // getting the url from admin input and sort it to get artist and album as strings.
     const urlFromAdmin = req.body.url;

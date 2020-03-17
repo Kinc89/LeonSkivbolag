@@ -1,52 +1,93 @@
 const express = require("express");
 const app = express.Router();
 const { ROUTE, VIEW } = require("./variables");
+const config = require("../../config/config")
 
 // authentification modules
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 
+const verifyToken = require("../middlewares/verifyToken");
+
 // User schema to database
 const User = require("../../model/user");
 
-let foundUser = false;
+app.get(ROUTE.signup, verifyToken, (req, res) => {
 
-app.get(ROUTE.signup, (req, res) => {
-    res.render(VIEW.signup, { foundUser: false });
+    if (!req.validCookie || req.validCookie.user.status === "guest") return res.render(VIEW.signup, { foundUser: false });
+
+    if (req.validCookie.user.status === "user") return res.redirect(ROUTE.userProfile);
+
+    if (req.validCookie.user.status == "admin") return res.redirect(ROUTE.admin);
+
 });
 
-app.post("/signup", async (req, res) => {
+app.post(ROUTE.signup, verifyToken, async (req, res) => {
     
-    const salt = await bcrypt.genSalt(10);
+    if (!req.validCookie) {
+       
+        // generate salt and hash the password input
+        const salt = await bcrypt.genSalt(10);
+        const hashPassword = await bcrypt.hash(req.body.password, salt);
 
-    const hashPassword = await bcrypt.hash(req.body.password, salt);
+        // Does user already exist in DB?
+        const foundUser = await User.exists({ username: req.body.username })
+        if (foundUser) { 
+            res.render(VIEW.signup, { foundUser: true });
+        }
 
-    // Does user already exist in DB?
-    const foundUser = await User.exists({ username: req.body.username })
-    if (foundUser) { 
-        res.render(VIEW.signup, { foundUser: true });
-    }
-    
-    // Can the new user become an admin?
-    let status;
-    const adminUsers = ["julia", "balthazar", "leon", "yamandu", "oskar"];
-    if (adminUsers.includes(req.body.username)) {
+        // Can the new user become an admin?
+        let status;
+        const adminUsers = ["julia", "balthazar", "leon", "yamandu", "oskar"];
+        if (adminUsers.includes(req.body.username)) {
         status = "admin";
-    }
+        }
 
-    console.log(status)
+        // Create an user or admin user in the DB
+        const user = await new User({
+            email: req.body.email,
+            username: req.body.username,
+            password: hashPassword,
+            status: status // status is either undefined or 'admin'
+        }).save();
 
-    await new User({
-        email: req.body.email,
-        username: req.body.username,
-        password: hashPassword,
-        status: status
-    }).save();
+        console.log("USER (ADMIN OR USER) ->", user);
+        return res.redirect(VIEW.login);
+
+    } else {
+
+        // WHEN IT'S A GUEST (VISITOR WITH COOKIE)
+        console.log("req.validCookie.user -> ", req.validCookie.user);
+        console.log("req.validCookie -> ", req.validCookie);
+
+        const cart = [];
+        const cartFromCookieArray = req.validCookie.user.cart;
+        console.log("cartFromCookieArray -> ", cartFromCookieArray);
+        cartFromCookieArray.forEach(item => { 
+            cart.push(item);
+        });
+        console.log("LOADED CART ->", cart.name);
+
+        // generate salt and hash the password input
+        const salt = await bcrypt.genSalt(10);
+        const hashPassword = await bcrypt.hash(req.body.password, salt);
+
+        // Does user already exist in DB?
+        const foundUser = await User.exists({ username: req.body.username })
+        if (foundUser) { 
+            res.render(VIEW.signup, { foundUser: true });
+        }
     
-    const users = await User.find(); // or find (worked)?
-    console.log(users);
-    // res.redirect("userProfile");
-    res.redirect(VIEW.login);
+        const user = await new User({
+            email: req.body.email,
+            username: req.body.username,
+            password: hashPassword,
+            cart: cart
+        }).save();
+        
+        console.log("USER FROM GUEST ->", user);
+        return res.redirect(VIEW.login);
+    }
 
 });
 

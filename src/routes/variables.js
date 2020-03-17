@@ -3,12 +3,16 @@ const ROUTE = {
     root: '/',
     admin: '/admin',
     album: '/album/:id',
-    addAlbum: '/add-album',
     signup: '/signup',
     login: '/login',
-    addToCart: '/addToCart/:id',
-    userProfile: '/userProfile',
-    cart: '/cart'
+    addToCart: '/addtocart/:id',
+    userProfile: '/userprofile',
+    cart: '/cart',
+    checkout: '/checkout',
+    confirmation: '/confirmation',
+    logout: '/logout',
+    error403: '/error403',
+    removeItem: '/removeitem/:id'
 };
 
 // view variables
@@ -16,11 +20,14 @@ const VIEW = {
     root: 'main',
     admin: 'admin',
     album: 'album',
-    addAlbum: 'add-album',
     signup: 'signup',
     login: 'login',
     userProfile: 'user-profile',
-    cart: 'cart'
+    cart: 'cart',
+    checkout: 'checkout',
+    confirmation: 'confirmation',
+    logout: 'logout',
+    error403: 'error-403',
 };
 
 module.exports = { ROUTE, VIEW };

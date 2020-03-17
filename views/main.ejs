@@ -1,26 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Skivbolaget</title>
-    <link rel="stylesheet" href="../css/index.css">
-    <script src="https://kit.fontawesome.com/5fc0d582b6.js" crossorigin="anonymous"></script>
-</head>
+<%- include ("head") %>
 
 <body>
-
-    <header>
-        <div id="menu-collapse" class="header-icon"><i class="fas fa-bars fa-lg"></i></div>
-        <div id="logo-container"><img id="logo-small" src="/img/logo.svg" alt="Skivbolaget logo"></div>
-        <a href="/signup">
-            <div id="user" class="header-icon"><i class="far fa-user fa-lg"></i></div>
-        </a>
-        <a href="/cart">
-            <div id="shoppingcart" class="header-icon"><i class="fas fa-compact-disc fa-lg"></i></div>
-        </a>
-    </header>
+    <%- include ("header.ejs") %>
     <div class="sortContainer">
         <div class="filter">filter</div>
         <div class="sort">sort</div>
@@ -39,14 +20,12 @@
             <div class="year"><%= album.released %></div>
             <div class="price">
                 <form action="/addtocart/<%= album._id %>" method="get">
-                    <button type="submit" style="color:black"><%= album.price %> SEK</button>
+                    <button type="submit"><%= album.price %> SEK</button>
                 </form>
             </div>
         </div>
         <% }) %>
     </div>
-</body>
-
 </body>
 
 </html>

@@ -1,20 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Skivbolaget: user profile</title>
-    <link rel="stylesheet" href="../css/index.css">
-    <script src="https://kit.fontawesome.com/5fc0d582b6.js" crossorigin="anonymous"></script>
-</head>
-
+<%- include('head') %>
 <body>
+    <%- include('header') %>
 
-    <a href="/" style="color:white">skivbolaget root</a><br />
-    <a href="/cart" style="color:white">your cart</a><br />
+<h1>skivbolaget: userprofile</h1>
 
-    <p>Welcome <%= user.username %></p>
+    <p>Welcome <%= user.username %>, you have <%= user.cart.length %> items in <a href="/cart" style="color:white">your cart</a>.</p>
+
+    <p><a href="/logout" style="color: lightcoral">Log out</a></p>
 
     
 
