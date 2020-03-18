@@ -31,30 +31,43 @@ $break-large: 1200px;
 
         img {
             max-width: 100%;
-            
-            -webkit-filter: brightness(100%);
-            
+        }
 
-            .image:hover{
-                -webkit-filter: brightness(50%);
-                -webkit-transition: all 0.5s ease;
-                -moz-transition: all 0.5s ease;
-                -o-transition: all 0.5s ease;
-                -ms-transition: all 0.5s ease;
-                transition: all 0.5s ease;
-                .hover-text{
-                    position: absolute;
-                    top: 10px;
-                    left: 10px;
-                    display: block;
-                }
+    }
+
+    .overlay {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 100%;
+        width: 100%;
+        opacity: 0;
+        transition: .5s ease;
+        background-color: rgb(0, 0, 0);
+      }
+
+      .overlay:hover {
+        opacity: 0.7;
+      }
     
-            }
-        }
-        .hover-text{
-            display: none;
-        }
-        
+      .overlay-text {
+        color: white;
+        font-size: 1em;
+        margin: auto;
+        position: absolute;
+        width: 80%;
+        top: 50%;
+        left: 50%;
+        -webkit-transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+        text-align: center;
+      }
+    
+    
+
 
 
     }
@@ -100,7 +113,7 @@ $break-large: 1200px;
             color: white;
           }
     }
-}
+
 
 //* scss för tablet
 @media screen and (min-width: $break-medium) {
