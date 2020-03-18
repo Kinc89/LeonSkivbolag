@@ -10,11 +10,10 @@ app.get(ROUTE.cart, verifyToken, async (req, res) => {
 
     if (!req.validCookie) {
         const user = { status: 'visitor' };
-        res.render(VIEW.cart, { emptyCart: true, user })
-
+        return res.render(VIEW.cart, { emptyCart: true, user })
     }
     
-    if (req.validCookie.user.status === "guest") {
+    if (req.validCookie.user.status === 'guest') {
         const user = req.validCookie.user;
         return res.render(VIEW.cart, { emptyCart: false, user })
     }

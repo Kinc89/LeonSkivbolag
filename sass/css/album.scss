@@ -78,6 +78,11 @@ $break-large: 1200px;
         height: 395px;
         margin: 10px 15px 10px 15px
     }
+    .musicPlayerLarge {
+        display: none;
+        // height: 395px;
+        // margin: 10px 15px 10px 15px
+    }
 }
 .albumInfo {
     text-align: center;
@@ -118,16 +123,29 @@ $break-large: 1200px;
         margin: 6px;
     }
 }
+#albumInfoLarge{
+    display: none;
+}
 @media screen and (min-width: $break-medium) {
     .container {
         display: grid;
-        grid-template-columns: repeat(2,1fr);   
+        grid-template-columns: repeat(2,1fr); 
+        // margin: 10px 30px 30px 100px;  
         .musicPlayer{
+            display: none;
             padding: 15px;
             margin: 20px 15px 0px 15px;
             height: 100%;
+            iframe{  
+                height: 100%;
+            }
+        }
+        .musicPlayerLarge{
+            display: block;
+            // padding: 15px;
+            margin: 20px 15px 0px 15px;
+            height: 90%;
             iframe{
-                
                 height: 100%;
             }
         }
@@ -136,7 +154,32 @@ $break-large: 1200px;
 }
 
 @media screen and (min-width: $break-large) {
+
+    .container {
+        margin: 0 5px;
+        .item { 
+            max-width: 85%;
+            margin-left: 10%;
+        }
+    }
     .musicPlayer{
         height: 100%;
     }
+    .musicPlayerLarge{
+        height: 50%;
+        max-width: 85%;
+        margin-left: 50px;
+        margin-right: 50px;
+    }
+    #musicPlayerLarge{
+        height: 50%
+    }
+    .albumInfo{
+        display: none;
+    }
+    #albumInfoLarge{
+        display: block;
+        margin-left: 5px;
+    }
+
 }
