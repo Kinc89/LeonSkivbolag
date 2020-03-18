@@ -14,7 +14,7 @@ const User = require("../../model/user");
 
 app.get(ROUTE.signup, verifyToken, (req, res) => {
 
-    if (!req.validCookie || req.validCookie.user.status === "guest") return res.render(VIEW.signup, { foundUser: false });
+    if (!req.validCookie || req.validCookie.user.status === 'guest') return res.render(VIEW.signup, { foundUser: false });
 
     if (req.validCookie.user.status === "user") return res.redirect(ROUTE.userProfile);
 
@@ -56,17 +56,9 @@ app.post(ROUTE.signup, verifyToken, async (req, res) => {
 
     } else {
 
-        // WHEN IT'S A GUEST (VISITOR WITH COOKIE)
-        console.log("req.validCookie.user -> ", req.validCookie.user);
-        console.log("req.validCookie -> ", req.validCookie);
+        // when it's a guest (visitor who added item(s) to its cart, status 'guest')
 
-        const cart = [];
-        const cartFromCookieArray = req.validCookie.user.cart;
-        console.log("cartFromCookieArray -> ", cartFromCookieArray);
-        cartFromCookieArray.forEach(item => { 
-            cart.push(item);
-        });
-        console.log("LOADED CART ->", cart.name);
+        // Create an user //
 
         // generate salt and hash the password input
         const salt = await bcrypt.genSalt(10);
@@ -77,16 +69,22 @@ app.post(ROUTE.signup, verifyToken, async (req, res) => {
         if (foundUser) { 
             res.render(VIEW.signup, { foundUser: true });
         }
+
+        // take in data from cart in cookie
     
         const user = await new User({
             email: req.body.email,
             username: req.body.username,
-            password: hashPassword,
-            cart: cart
+            password: hashPassword 
         }).save();
         
-        console.log("USER FROM GUEST ->", user);
-        return res.redirect(VIEW.login);
+        const cart = req.validCookie.user.cart;
+
+        cart.forEach( async (item) => {
+            await user.addToCart(item);
+        })
+        
+        return res.redirect(ROUTE.login);
     }
 
 });

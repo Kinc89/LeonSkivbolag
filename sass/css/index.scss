@@ -27,10 +27,49 @@ $break-large: 1200px;
         margin-top: 20px;
         grid-column: 2   / 14;
         grid-row: 2 / 2;
+        position: relative; 
 
         img {
             max-width: 100%;
         }
+
+    }
+
+    .overlay {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 100%;
+        width: 100%;
+        opacity: 0;
+        transition: .5s ease;
+        background-color: rgb(0, 0, 0);
+      }
+
+      .overlay:hover {
+        opacity: 0.7;
+      }
+    
+      .overlay-text {
+        color: white;
+        font-size: 1em;
+        margin: auto;
+        position: absolute;
+        width: 80%;
+        top: 50%;
+        left: 50%;
+        -webkit-transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+        text-align: center;
+      }
+    
+    
+
+
+
     }
     .artist {
         grid-column: 2 / 9;
@@ -74,6 +113,7 @@ $break-large: 1200px;
             color: white;
           }
     }
+<<<<<<< HEAD
 }
 //* scss för checkout 
 .formContainer{
@@ -135,16 +175,14 @@ $break-large: 1200px;
 // .formEmail{
 //   width: 50%;
 // }
+=======
+>>>>>>> 1ee9da8cde6f59497d10acff87190915c4ca4099
 
 
 //* scss för tablet
 @media screen and (min-width: $break-medium) {
 
-header {
-    #logo-container {
-        height: 65%;
-    }
-}
+
 .sortContainer {
     display: flex;
     font-size: 1.2em;
@@ -180,16 +218,7 @@ header {
 //* scss för desktop
 @media screen and (min-width: $break-large) {
 
-    header {
-        height: 60px;
-        grid-template-rows: 100%;
-        #logo-container {
-            height: 70%;
-        }
-        .header-icon {
-            font-size: 1.5vw;
-        }
-    }
+ 
     .sortContainer{
         display: flex;
         font-size: 1.2em;
