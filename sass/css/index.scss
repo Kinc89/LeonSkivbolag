@@ -113,15 +113,16 @@ $break-large: 1200px;
             color: white;
           }
     }
-<<<<<<< HEAD
-}
+
 //* scss för checkout 
 .formContainer{
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
+    // background-color: #fff;
     input[type=text] {
         display: flex;
-        width: 1fr;
+        width: 80%;
         margin-bottom: 20px;
         padding: 12px;
         border: 1px solid #ccc;
@@ -130,54 +131,15 @@ $break-large: 1200px;
     
 }
 .formControl{
-    width: 50%;
+    width: 45%;
+}
+.formH{
+    display: flex;
+    justify-content: center;
 }
 .icon-container{
     font-size: 2em;
 }
-// 
-// .formName, .formEmail, .formAdress, .formCity, .formState, .formZip {
-//     width: 50%;
-// }
-// .formName{
-//     width: 50%;
-// }
-// .formEmail{
-//   width: 50%;
-// }
-// .formAdress{
-//     width: 50%;
-// }
-// .formCity{
-//   width: 50%;
-// }
-// .formState{
-//     width: 50%;
-// }
-// .formZip{
-//   width: 50%;
-// }
-// .formName{
-//     width: 50%;
-// }
-// .formEmail{
-//   width: 50%;
-// }
-// .formName{
-//     width: 50%;
-// }
-// .formEmail{
-//   width: 50%;
-// }
-// .formName{
-//     width: 50%;
-// }
-// .formEmail{
-//   width: 50%;
-// }
-=======
->>>>>>> 1ee9da8cde6f59497d10acff87190915c4ca4099
-
 
 //* scss för tablet
 @media screen and (min-width: $break-medium) {
