@@ -213,4 +213,15 @@ $break-large: 1200px;
     .container {
         grid-template-columns: repeat(3,1fr);
     }
+
+
+// Large checkout
+    .formContainer{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-evenly;
+    }
+    .formControl{
+        width: 40%;
+    }
 }
