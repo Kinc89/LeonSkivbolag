@@ -2,10 +2,10 @@
 <body>
     <%- include('header') %>
 
-    <h1>Checkout page</h1>
+    <h1 class="formH">Checkout page</h1>
     <br />
     <!-- here will be user cart -->
-    <p><%= user %></p>
+    <p class="formH"><%= user %></p>
     
     <!-- input form for user info -->
     <!-- payment methods -->
@@ -72,10 +72,10 @@
     </form>
 
     
-    <form action="/confirmation" method="get">
+    <form action="/confirmation" method="get" class="checkoutBtnForm">
         <!-- Vilken submitväg ska användas? //Leon -->
         <!-- <input type="submit" value="Continue to checkout" class="btn"> -->
-        <button type="submit">Confirm payment</button>
+        <button type="submit" class="checkoutBtn">Confirm payment</button>
     </form>
 
 </body>
