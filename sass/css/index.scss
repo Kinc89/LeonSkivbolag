@@ -7,6 +7,7 @@ $break-large: 1200px;
     .filter{
         margin-left: auto;
         display: flex;
+
     }
     .sort{
         justify-content: flex-end;
@@ -78,36 +79,92 @@ $break-large: 1200px;
 
 // Cart CSS
 .cart {
+    margin: 15px 15px;
     text-align: center;
-    
     margin-left: 15px;
     margin-right: 15px;
     h1 {
-        font-size: 3em;
+        box-sizing: border-box;
+        background: #0F5259;
+        border-radius: 6px;
+        margin-top: 5px;
+        font-size: 1.2em;
     }
-    i {
-        font-size: 2em;
+    .cartContainer {
+        .item {
+        display: grid;
+        width: 100%;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(4fr);
+        margin: 10px 0;
+        .image{
+            grid-column: 1 / 2;
+            grid-row: 1 / 4;
+            img{
+                max-width: 100%;
+            }
+        }
+        .yourCart{
+            grid-column: 2 / 3;
+            grid-row: 2 / 3;
+            line-height: 1.3;
+            font-size: 1.1em;
+            i {
+                font-size: 1.2em;
+            }
+
+        }
     }
+}
+
+    // .price {
+    //     grid-column: 2 / 9;
+    //     grid-row: 14 / 15;
+    //     font-size: 1em;
+    //     font-weight: lighter;
+    //     margin-top: 3.5px;
+    //     button {
+    //         background-color: rgb(41, 41, 41);
+    //         color: #e0e0e0;
+    //         font-size: 1em;
+    //         border: 2px solid rgb(9, 112, 12);
+    //         border-radius: 6px;
+    //         transition-duration: 0.4s;
+    //       }
+    //       button:hover {
+    //         background-color: rgb(29, 112, 12); /* Green */
+    //         color: white;
+    //       }
+    // }
     ul{
         list-style-type: none;
         padding: 0;
+        border: 1px solid #EEEEEE;
+        box-sizing: border-box;
+        border-radius: 6px;
+        margin-top: 9px;
+        font-size: 1em;
+        font-weight: lighter;
+        line-height: 2.1em;
         
         li{
             list-style-position: inside;
             list-style-type: none;
         }
     }
+    a{
+        color: #e0e0e0;
+        
+    }
+    a:hover{
+        color: #0F5259;
+    }
+
 }
 
 
 //* scss för tablet
 @media screen and (min-width: $break-medium) {
-
-header {
-    #logo-container {
-        height: 65%;
-    }
-}
 .sortContainer {
     display: flex;
     font-size: 1.2em;
@@ -134,16 +191,7 @@ header {
 //* scss för desktop
 @media screen and (min-width: $break-large) {
 
-    header {
-        height: 60px;
-        grid-template-rows: 100%;
-        #logo-container {
-            height: 70%;
-        }
-        .header-icon {
-            font-size: 1.5vw;
-        }
-    }
+   
     .sortContainer{
         display: flex;
         font-size: 1.2em;
