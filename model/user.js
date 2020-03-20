@@ -10,9 +10,10 @@ const userSchema = new Schema({
         itemId: { type: mongoose.Schema.Types.ObjectId, ref: 'Album' },
         name: { type: mongoose.Schema.Types.String, ref: 'Album' },
         artist: { type: mongoose.Schema.Types.String, ref: 'Album' },
-        price: { type: mongoose.Schema.Types.Number, ref: 'Album' }        
+        price: { type: mongoose.Schema.Types.Number, ref: 'Album' },
+        imgUrl: { type: mongoose.Schema.Types.String, ref: 'Album' }        
     }],
-    order: []
+    order: [] // not ready yet
 })
 
 userSchema.methods.addToCart = function (item) {
@@ -20,7 +21,8 @@ userSchema.methods.addToCart = function (item) {
         itemId: item._id,
         name: item.name,
         artist: item.artist,
-        price: item.price
+        price: item.price,
+        imgUrl: item.imgUrl
     });
     return this.save();
 }

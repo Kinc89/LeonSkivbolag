@@ -34,6 +34,7 @@ app.get(ROUTE.addToCart, verifyToken, async (req, res) => {
 
     } else if (req.validCookie.user.status == "guest") {
         
+        // in the case the user is not logged in, but there is a cookie (status 'guest')
         const cart = req.validCookie.user.cart;
         const albumToAdd = await Album.findById({ _id: req.params.id });
         cart.push(albumToAdd);
@@ -52,7 +53,7 @@ app.get(ROUTE.addToCart, verifyToken, async (req, res) => {
 
     } else {    
 
-        // in the case that the user is already logged in (there is a cookie)
+        // in the case that the user is already logged in, there is a cookie, status 'user'
         const user = await User.findById({ _id: req.validCookie.user._id });
         const albumToAdd = await Album.findById({ _id: req.params.id });
 

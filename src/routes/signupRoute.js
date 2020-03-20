@@ -56,10 +56,10 @@ app.post(ROUTE.signup, verifyToken, async (req, res) => {
 
     } else {
 
-        // WHEN IT'S A GUEST (VISITOR WITH COOKIE)
-        console.log("req.validCookie.user -> ", req.validCookie.user);
+        // when it's a guest (visitor who added item(s) to its cart, status 'guest')
 
-        // CREATE USER
+        // Create an user //
+
         // generate salt and hash the password input
         const salt = await bcrypt.genSalt(10);
         const hashPassword = await bcrypt.hash(req.body.password, salt);
@@ -71,17 +71,15 @@ app.post(ROUTE.signup, verifyToken, async (req, res) => {
         }
 
         // take in data from cart in cookie
-        
+    
         const user = await new User({
             email: req.body.email,
             username: req.body.username,
             password: hashPassword 
         }).save();
         
-        
         const cart = req.validCookie.user.cart;
 
-        // create Parrallel save error -> how to solve this? Question Rakib.
         cart.forEach( async (item) => {
             await user.addToCart(item);
         })
