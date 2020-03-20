@@ -281,11 +281,8 @@ $break-large: 1200px;
 //* scss för desktop
 @media screen and (min-width: $break-large) {
 
-<<<<<<< HEAD
    
-=======
  
->>>>>>> a5f2974579873134921c27ea90fffdff528de786
     .sortContainer{
         display: flex;
         font-size: 1.2em;
@@ -304,10 +301,6 @@ $break-large: 1200px;
     .container {
         grid-template-columns: repeat(3,1fr);
     }
-<<<<<<< HEAD
-}
-
-=======
 
 
 // Large checkout
@@ -320,4 +313,3 @@ $break-large: 1200px;
         width: 40%;
     }
 }
->>>>>>> a5f2974579873134921c27ea90fffdff528de786

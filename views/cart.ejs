@@ -47,6 +47,7 @@
                 <div class="image">
                     <img src="<%= album.imgUrl %>" alt="Image of '<%= album.name %>' by <%= album.artist %>" />
                 </div>
+
                 <div class="yourCart">
                     <i><%= album.name %></i><br>
                     <b><%= album.artist %></b><br>
@@ -55,11 +56,11 @@
             </div>
             <% }); %>
         </div>
-        <form action="/checkout" method="get">
-            <button type="submit">Proceed to checkout</button>
-        </form>
     </div>
 
+    <form action="/checkout" method="get">
+        <button type="submit">Proceed to checkout</button>
+    </form>
     <% } %>
 
     <% if (user.status == "admin") { %>
