@@ -10,9 +10,15 @@
         <% albums.forEach((album) => { %>
         <div class="item">
             <div class="image">
+                <img src="<%= album.imgUrl %>" alt="Image of '<%= album.name %>' by <%= album.artist %>" />
                 <a href="/album/<%= album._id %>">
-                    <img src="<%= album.imgUrl %>" alt="Image of '<%= album.name %>' by <%= album.artist %>" />
+                    <div class="overlay">
+                        <div class="overlay-text">
+                            <p><%= album.description %></p>
+                        </div>
+                    </div>
                 </a>
+
             </div>
             <div class="artist"><%= album.artist %></div>
             <div class="album"><i><%= album.name %></i></div>
@@ -24,6 +30,7 @@
             </div>
         </div>
         <% }) %>
+        <%- include('partials/pagination') %>
     </div>
 </body>
 
