@@ -1,7 +1,7 @@
-<%- include ("head") %>
+<%- include('partials/head.ejs') %>
 
 <body>
-    <%- include ("header.ejs") %>
+    <%- include('partials/header.ejs') %>
     <!-- <div class="sortContainer">
         <div class="filter">filter</div>
         <div class="sort">sort</div>
@@ -13,10 +13,12 @@
                 <img src="<%= album.imgUrl %>" alt="Image of '<%= album.name %>' by <%= album.artist %>" />
                 <a href="/album/<%= album._id %>">
                     <div class="overlay">
-                        <div class="overlay-text"><p><%= album.description %></p></div>
-                      </div>
+                        <div class="overlay-text">
+                            <p><%= album.description %></p>
+                        </div>
+                    </div>
                 </a>
-                
+
             </div>
             <div class="artist"><%= album.artist %></div>
             <div class="album"><i><%= album.name %></i></div>
@@ -28,6 +30,7 @@
             </div>
         </div>
         <% }) %>
+        <%- include('partials/pagination') %>
     </div>
 </body>
 

@@ -1,14 +1,16 @@
-<%- include('head') %>
+<%- include('partials/head.ejs') %>
+
 <body>
-    <%- include('header') %>
+    <%- include('partials/header.ejs') %>
 
-<h1>skivbolaget: userprofile</h1>
+    <h1>skivbolaget: userprofile</h1>
 
-    <p>Welcome <%= user.username %>, you have <%= user.cart.length %> items in <a href="/cart" style="color:white">your cart</a>.</p>
+    <p>Welcome <%= user.username %>, you have <%= user.cart.length %> items in <a href="/cart" style="color:white">your
+            cart</a>.</p>
 
     <p><a href="/logout" style="color: lightcoral">Log out</a></p>
 
-    
+
 
 </body>
 

@@ -1,16 +1,16 @@
 // schema för en album
 const mongoose = require('mongoose');
 
-const schema = new mongoose.Schema({
-    name: String,
-    artist: String,
-    price: Number,
-    released: String,
-    description: String,
-    imgUrl: String,
-    numListeners: Number
+const albumSchema = new mongoose.Schema({
+    name: { type: String, required: true, unique: true },
+    artist: { type: String, required: true },
+    price: { type: Number, required: true },
+    released: { type: String },
+    description: { type: String },
+    imgUrl: { type: String },
+    numListeners: { type: Number }
 })
 
-const album = mongoose.model('Album', schema);
+const Album = mongoose.model('Album', albumSchema);
 
-module.exports = album;
+module.exports = Album;
