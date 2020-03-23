@@ -21,6 +21,7 @@
                 <div class="album"><%= album.name %></div>
                 <div class="artist"><%= album.artist %></div>
                 <div class="price"><%= album.price %></div>
+
                 <% }); %>
             </div>
         </div>
@@ -53,14 +54,20 @@
                     <b><%= album.artist %></b><br>
                     <%= album.price %> SEK
                 </div>
+                <div class="removeItem">
+                    <a href="/removeitem/<%= album._id %>">X</a>
+                </div>
             </div>
             <% }); %>
         </div>
+        <div class="cost">Total Sum: XXX</div>
     </div>
 
-    <form action="/checkout" method="get">
-        <button type="submit">Proceed to checkout</button>
-    </form>
+    <div class="checkout">
+        <form action="/checkout" method="get">
+            <button type="submit" class="checkoutBtn">Purchase</button>
+        </form>
+    </div>
     <% } %>
 
     <% if (user.status == "admin") { %>
