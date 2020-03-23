@@ -3,28 +3,39 @@
 <body>
     <%- include('partials/header.ejs') %>
 
-    <h1>Sign-up page</h1>
-
-    <form action="/signup" method="post">
-
-        <input type="email" name="email" id="email" placeholder="enter you email"><br />
-        <input type="text" name="username" id="username" placeholder="enter you username"><br />
-        <br />
-        <input type="password" name="password" id="password" placeholder="enter your password"><br />
-        <input type="password" name="passwordRepeat" id="password" placeholder="please repeat your password"><br />
-        <br />
-        <button type="submit">Sign Up</button>
-
-        <% if (foundUser) { %>
-        <p>The user already exists. Please go to <a href="/login">Login page</a> or choose another e-mail and username.
-        </p>
-        <% } %>
-
-        <p>Do you already have an account? <a href="/login">Login page</a></p>
-
-
-
-    </form>
+    <h1 class="formHeadline">Sign-up page</h1>
+    
+        <form action="/signup" method="post">
+            <div class="signupContainer">
+                <div class="signupEmail signupControl">
+                    <input type="email" name="email" id="email" placeholder="Email"><br />
+                </div> 
+                <div class="signupName signupControl">
+                    <input type="text" name="username" id="username" placeholder="Username"><br />
+                </div>
+                <!-- <br /> -->
+                <div class="signupPassword signupControl">
+                <input type="password" name="password" id="password" placeholder="Password"><br />
+                </div>
+                <div class="signupPassword signupControl">
+                <input type="password" name="passwordRepeat" id="password" placeholder="Repeat password"><br />
+                </div>
+                <!-- <br /> -->
+                <div class="signupSubmit signupControl">
+                <button type="submit" class="confirmBtn">Sign Up</button>
+                </div>
+                <div class="accountInfo">
+                <% if (foundUser) { %>
+                <p>The user already exists. Please go to <a href="/login">Login page</a> or choose another e-mail and username.
+                </p>
+                <% } %>
+        
+                <p>Do you already have an account? <a href="/login">Login page</a></p>
+                </div>
+            </div>
+        </form>
+    
+    
 
 </body>
 
