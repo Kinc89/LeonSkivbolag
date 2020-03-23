@@ -8,6 +8,22 @@
     <!-- here will be user cart -->
     <p class="formH"><%= user %></p>
 
+    <% if (user.status == "user") { %>
+        <div class="checkoutContainer">
+            <% user.cart.forEach(album=> { %>
+
+            <div class="item">
+
+                <div class="yourCart">
+                    <i><%= album.name %></i><br>
+                    <b><%= album.artist %></b><br>
+                </div>
+            </div>
+            <% }); %>
+        </div>
+    <% } %>
+    <h3> total price</h3>
+
     <!-- input form for user info -->
     <!-- payment methods -->
     <form action="/confirmation">
