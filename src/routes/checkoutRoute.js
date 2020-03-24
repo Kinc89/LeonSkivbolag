@@ -4,6 +4,7 @@ const { ROUTE, VIEW } = require("./variables");
 const User = require("../../model/user");
 const verifyToken = require("../middlewares/verifyToken");
 const checkUser = require("../middlewares/checkUser");
+const calcTotalPrice = require("../functions/calcTotalPrice");
 
 app.get(ROUTE.checkout, verifyToken, checkUser, async (req, res) => {
     
@@ -18,9 +19,10 @@ const  order = req.validCookie.user.cart
 const user = await User.findById({ _id: req.validCookie.user._id });
 
 console.log("get on checkout route");
-      
 
-res.render(VIEW.checkout, { user });
+const totalPrice = await calcTotalPrice(user.cart);
+
+res.render(VIEW.checkout, { user, totalPrice });
 
 });
 

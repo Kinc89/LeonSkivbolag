@@ -5,6 +5,7 @@ const { ROUTE, VIEW } = require("./variables");
 const User = require("../../model/user");
 
 const verifyToken = require("../middlewares/verifyToken");
+const calcTotalPrice = require("../functions/calcTotalPrice");
 
 app.get(ROUTE.cart, verifyToken, async (req, res) => {
 
@@ -20,7 +21,9 @@ app.get(ROUTE.cart, verifyToken, async (req, res) => {
     
     const user = await User.findById({ _id: req.validCookie.user._id });
 
-    res.render(VIEW.cart, { emptyCart: false, user });
+    const totalPrice = await calcTotalPrice(user.cart);
+
+    res.render(VIEW.cart, { emptyCart: false, user, totalPrice });
 });
 
 module.exports = app;
