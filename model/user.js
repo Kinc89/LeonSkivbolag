@@ -13,7 +13,9 @@ const userSchema = new Schema({
         price: { type: mongoose.Schema.Types.Number, ref: 'Album' },
         imgUrl: { type: mongoose.Schema.Types.String, ref: 'Album' }        
     }],
-    order: [] // not ready yet
+    order: [], // not ready yet
+    resetToken: { type: String },
+    expirationToken: Date
 })
 
 userSchema.methods.addToCart = function (item) {
