@@ -9,6 +9,17 @@ const jwt = require("jsonwebtoken");
 
 const verifyToken = require("../middlewares/verifyToken");
 
+const nodemailer = require("nodemailer");
+const sendGridTransport = require("nodemailer-sendgrid-transport");
+
+// Nodemailer
+const transport = nodemailer.createTransport(sendGridTransport({
+    auth: {
+        api_key: config.mail
+    }
+})
+);
+
 // User schema to database
 const User = require("../../model/user");
 
@@ -82,6 +93,13 @@ app.post(ROUTE.signup, verifyToken, async (req, res) => {
 
         cart.forEach( async (item) => {
             await user.addToCart(item);
+        })
+
+        transport.sendMail({
+            to: user.email,
+            from: "no-reply@skivbolaget.com",
+            subject: "Login succeeded",
+            html: "<h1>It worked! Your email: " + user.email + "</h1>"
         })
         
         return res.redirect(ROUTE.login);

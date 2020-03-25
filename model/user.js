@@ -14,6 +14,8 @@ const userSchema = new Schema({
         imgUrl: { type: mongoose.Schema.Types.String, ref: 'Album' }        
     }],
     order: []// not ready yet
+    resetToken: { type: String },
+    expirationToken: Date
 })
 
 userSchema.methods.addToCart = function (item) {

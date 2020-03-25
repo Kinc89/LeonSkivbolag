@@ -135,6 +135,14 @@ $break-large: 1200px;
 .formH{
     display: flex;
     justify-content: center;
+    width: 100%;
+    background-color: #18818c;
+}
+.formHeadline{
+    display: flex;
+    justify-content: center;
+    background-color: #0F5259;
+
 }
 .icon-container{
     font-size: 2em;
@@ -240,6 +248,77 @@ $break-large: 1200px;
     }
 
 }
+// scss för signup/login
+
+.signupContainer {
+    display: flex;
+    // justify-content: center;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+
+    margin: 0 15px;
+    input{
+        display: flex;
+        width: 100%;
+        margin-bottom: 20px;
+        padding: 12px 0;
+        border: 1px solid #ccc;
+        border-radius: 3px;
+      }
+} 
+.loginContainer {
+    display: flex;
+    // justify-content: center;
+    // flex-wrap: wrap;
+    justify-content: space-evenly;
+
+    margin: 0 15px;
+    input{
+        display: flex;
+        width: 100%;
+        margin-bottom: 20px;
+        padding: 12px 0;
+        border: 1px solid #ccc;
+        border-radius: 3px;
+      }
+} 
+.signupControl{
+    width: 45%;
+    display: block;
+}
+.loginControl {
+    width: 45%;
+    display: block;
+}
+.signupSubmit{
+    display:flex;
+    justify-content: center;
+}
+.accountInfo{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    a {
+        color: lightgoldenrodyellow;
+        padding: 10px;
+    }
+}
+.confirmBtn{
+    display:flex;
+    justify-content: center;
+    color: #EEEEEE;
+    background-color: rgb(41, 41, 41);
+    font-size: 1em;
+    border: 2px solid #de6b00;
+    border-radius: 6px;
+    transition-duration: 0.4s;
+}
+
+// box-sizing: border-box;
+// background: #0F5259;
+// border-radius: 6px;
+// margin-top: 5px;
+// font-size: 1.2em;
 .checkout{
     display: flex;
     justify-content: flex-end;
