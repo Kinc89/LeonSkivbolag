@@ -39,10 +39,12 @@ const cartRoute = require("./src/routes/cartRoute");
 const checkoutRoute = require("./src/routes/checkoutRoute");
 const confirmationRoute = require("./src/routes/confirmationRoute");
 const logoutRoute = require("./src/routes/logoutRoute");
+const removeItemRoute = require("./src/routes/removeItemRoute");
 const error403Route = require("./src/routes/error403Route");
 const resetRoute = require("./src/routes/resetRoute");
 const resetTokenRoute = require("./src/routes/resetTokenRoute");
 const resetSuccessRoute = require("./src/routes/resetSuccessRoute");
+const removeAdminAlbumRoute = require("./src/routes/removeAdminAlbumRoute");
 // routes use
 app.use(mainRoute);
 app.use(adminRoute);
@@ -55,10 +57,12 @@ app.use(cartRoute);
 app.use(checkoutRoute);
 app.use(confirmationRoute);
 app.use(logoutRoute);
+app.use(removeItemRoute);
 app.use(error403Route);
 app.use(resetRoute);
 app.use(resetTokenRoute);
 app.use(resetSuccessRoute);
+app.use(removeAdminAlbumRoute);
 
 // Start servern
 const dbOptions = { useUnifiedTopology: true, useNewUrlParser: true, useCreateIndex: true };

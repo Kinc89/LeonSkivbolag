@@ -7,13 +7,14 @@ const verifyToken = require("../middlewares/verifyToken");
 const checkAdmin = require("../middlewares/checkAdmin");
 
 const Album = require("../../model/album");
+const User = require("../../model/user");
 const getLastFmData = require('../functions/getLastFmData');
 const checkIfAlbumExists = require('../functions/checkIfAlbumExists');
 const setPrice = require('../functions/setPrice');
 
-let user;
+app.get(ROUTE.admin, verifyToken, checkAdmin, async (req, res) => {
 
-app.get(ROUTE.admin, verifyToken, checkAdmin, (req, res) => {
+    const user = await User.findOne({ _id: req.validCookie.user._id });
 
     res.render(VIEW.admin, { user, invalidAlbum: false, albumAdded: false, existingAlbum: false, error: false });
 
@@ -85,7 +86,13 @@ app.post(ROUTE.admin, verifyToken, checkAdmin, async (req, res) => {
 
         console.log("NEW ALBUM IN DB > ", newAlbumInDb);
 
-        res.render(VIEW.admin, { user: undefined, invalidAlbum: false, albumAdded: true, existingAlbum: false, newAlbumInDb, error: false });
+        // check which user is logged in
+        const user = await User.findOne({ _id: req.validCookie.user._id });
+
+        // add the newly added album to the adminAlbums property in the admin user actually logged in.
+        await user.addAdminAlbums(newAlbumInDb);
+
+        res.render(VIEW.admin, { user, invalidAlbum: false, albumAdded: true, existingAlbum: false, newAlbumInDb, error: false });
 
     }
     

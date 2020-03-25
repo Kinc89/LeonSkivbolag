@@ -14,6 +14,11 @@ const userSchema = new Schema({
         imgUrl: { type: mongoose.Schema.Types.String, ref: 'Album' }        
     }],
     order: [],// not ready yet
+    adminAlbums: [{
+        itemId: { type: mongoose.Schema.Types.ObjectId, ref: 'Album' },
+        name: { type: mongoose.Schema.Types.String, ref: 'Album' },
+        artist: { type: mongoose.Schema.Types.String, ref: 'Album' }
+    }],
     resetToken: { type: String },
     expirationToken: Date
 })
@@ -34,11 +39,21 @@ userSchema.methods.removeFromCart = function (itemId) {
     return this.save();
 }
 
-userSchema.methods.removeAlbum = function (itemId) {
-    this.item.id({ _id: itemId }).remove();
+// for admin user to add album to their "adminAlbums" property
+userSchema.methods.addAdminAlbums = function (item) {
+    this.adminAlbums.push({ 
+        itemId: item._id,
+        name: item.name,
+        artist: item.artist
+    });
     return this.save();
 }
 
+// for admin user to remove an album from their collection ("adminAlbums" property)
+userSchema.methods.removeFromAdminAlbums = function (itemId) {
+    this.adminAlbums.id({ _id: itemId }).remove();
+    return this.save();
+}
 
 const User = mongoose.model("User", userSchema);
 

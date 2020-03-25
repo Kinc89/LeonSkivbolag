@@ -55,6 +55,7 @@ app.post(ROUTE.signup, verifyToken, async (req, res) => {
         }
 
         // Create an user or admin user in the DB
+        
         const user = await new User({
             email: req.body.email,
             username: req.body.username,

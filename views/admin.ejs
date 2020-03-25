@@ -11,19 +11,6 @@
     </form>
     <br />
 
-        <!-- Adding 2 fields to be able to add curators note and musicplayer, maybe we need to first pull the album info from Last fm and then after put in curators note and player, before posting it to the databse -->
-        <!-- Commented out because of creating double/triple ids in the page. Balthazar  -->
-        <!-- <form action="/admin" method="POST" id="post-album-form">
-            <input type="text" name="url" id="urlLastFm" placeholder="I really like this CD!" />
-            <button type="submit">Enter curators note to album</button>
-        </form>
-
-        <form action="/admin" method="POST" id="post-album-form">
-            <input type="text" name="url" id="urlLastFm" placeholder="5uRdvUR7xCnHmUW8n64n9y" />
-            <button type="submit">Enter spotify iframe or id</button>
-        </form> -->
-        <!-- remove if needed, its just placeholders -->
-
     <% if (error) { %>
     <p>We can't handle your request, please choose another album without the following characters: "…".</p>
     <% } %>
@@ -43,9 +30,13 @@
         Skivbolaget.</p>
     <% } %>
 
-    <% if (user) { %>
-    <%= user %>
-    <% } %>
+    <br />
+    <ul>
+    <% user.adminAlbums.forEach(album => { %>
+            <li><em><%= album.name %></em> by <%= album.artist %> // &nbsp;<span class="removeAdminAlbum" style="font-size: smaller"><a href="/removeadminalbum/<%= album._id %>">DELETE THIS ALBUM FROM YOUR COLLECTION</a></span></li>
+    <% }) %>
+    </ul>
+
 
     <p><a href="/logout" style="color: lightcoral">Log out</a></p>
 
