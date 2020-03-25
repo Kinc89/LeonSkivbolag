@@ -9,12 +9,12 @@
 
     <% if (user.status == "user") { %>
 
-    <p class="formH">Hi <%= user.username %>, here is the content of your cart:</p>
+    <p class="formH">Hello <%= user.username %>, this is the content of your cart:</p>
         <div class="checkoutContainer">
             <% user.cart.forEach(album=> { %>
                 <div class="yourCart">
                     <div class="item">
-                        <div class="image">
+                        <div class="image checkoutImg">
                             <img src="<%= album.imgUrl %>" alt="Image of '<%= album.name %>' by <%= album.artist %>" />
                         </div>
                         <i><%= album.name %></i><br>
@@ -26,7 +26,7 @@
             <% }); %>
         </div>
     <% } %>
-    <h3>Total Sum: <%= totalPrice %> SEK</h3>
+    <h3 class="formH">Total Sum: <%= totalPrice %> SEK</h3>
 
     <!-- input form for user info -->
     <!-- payment methods -->

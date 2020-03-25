@@ -111,6 +111,24 @@ $break-large: 1200px;
     }
 
 //* scss för checkout 
+.checkoutContainer{
+    display:flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    width: 100%;
+    margin: 3%;
+        .yourCart{
+            display: inline-block;
+            width: 33%;
+        }
+}
+.checkoutImg{
+    display: flex;
+    flex-wrap: wrap;
+            img{
+                max-width: 100px;
+            }
+}
 .formContainer{
     display: flex;
     flex-wrap: wrap;
@@ -287,8 +305,12 @@ $break-large: 1200px;
     display: block;
 }
 .loginControl {
-    width: 45%;
-    display: block;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 1fr;
+    width: 48%;
+    // display: block;
 }
 .signupSubmit{
     display:flex;
@@ -325,6 +347,7 @@ $break-large: 1200px;
     margin: 0 15px 15px 0;
     font-size: 2em;
 }
+
 //* scss för tablet
 @media screen and (min-width: $break-medium) {
 
