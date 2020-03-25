@@ -42,6 +42,7 @@ const logoutRoute = require("./src/routes/logoutRoute");
 const error403Route = require("./src/routes/error403Route");
 const resetRoute = require("./src/routes/resetRoute");
 const resetTokenRoute = require("./src/routes/resetTokenRoute");
+const resetSuccessRoute = require("./src/routes/resetSuccessRoute");
 // routes use
 app.use(mainRoute);
 app.use(adminRoute);
@@ -57,6 +58,7 @@ app.use(logoutRoute);
 app.use(error403Route);
 app.use(resetRoute);
 app.use(resetTokenRoute);
+app.use(resetSuccessRoute);
 
 // Start servern
 const dbOptions = { useUnifiedTopology: true, useNewUrlParser: true, useCreateIndex: true };

@@ -14,7 +14,8 @@ const ROUTE = {
     error403: '/error403',
     removeItem: '/removeitem/:id',
     reset: '/reset',
-    resetToken: '/reset/:token'
+    resetToken: '/reset/:token',
+    resetSuccess: '/resetSuccess'
 };
 
 // view variables
