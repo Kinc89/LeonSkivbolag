@@ -7,7 +7,6 @@ $break-large: 1200px;
     .filter{
         margin-left: auto;
         display: flex;
-
     }
     .sort{
         justify-content: flex-end;
@@ -29,13 +28,10 @@ $break-large: 1200px;
         grid-column: 2   / 14;
         grid-row: 2 / 2;
         position: relative; 
-
         img {
             max-width: 100%;
         }
-
     }
-
     .overlay {
         position: absolute;
         top: 0;
@@ -109,7 +105,6 @@ $break-large: 1200px;
             color: white;
           }
     }
-
 //* scss för checkout 
 .checkoutContainer{
     display:flex;
@@ -160,7 +155,6 @@ $break-large: 1200px;
     display: flex;
     justify-content: center;
     background-color: #0F5259;
-
 }
 .icon-container{
     font-size: 2em;
@@ -178,7 +172,6 @@ $break-large: 1200px;
     justify-content: center;
 }
 @media screen and (min-width: $break-medium) {
-
     body{
         font-size: 1.6em;
     }
@@ -200,7 +193,6 @@ $break-large: 1200px;
                 }
     }
 }
-
 @media screen and (min-width: $break-large) {
     .checkoutContainer{
         display:flex;
@@ -208,15 +200,11 @@ $break-large: 1200px;
         flex-direction: row;
         justify-content: space-between;
         width: 92%;
-        // margin: 3%;
             .yourCart{
                 display: flex;
-                // justify-content: center;
                 display: inline-block;
-                // margin-left: 15%;
                 width: 30%;
             }
-        
         .checkoutImg{
             display: flex;
             flex-wrap: wrap;
@@ -227,8 +215,6 @@ $break-large: 1200px;
     }
     }
 }
-
-
 // Cart CSS
 .cart {
     margin: 15px 15px;
@@ -265,7 +251,6 @@ $break-large: 1200px;
             i {
                 font-size: 1.2em;
             }
-
         }
         .removeItem{
             grid-column: 3 / 4;
@@ -283,7 +268,6 @@ $break-large: 1200px;
               }
             a:visited{
                 color: #e0e0e0;
-                
             }
               button:hover {
                 background-color: rgb(29, 112, 12); /* Green */
@@ -302,7 +286,6 @@ $break-large: 1200px;
         font-size: 1em;
         font-weight: lighter;
         line-height: 2.1em;
-        
         li{
             list-style-position: inside;
             list-style-type: none;
@@ -310,18 +293,14 @@ $break-large: 1200px;
     }
     a{
         color: #e0e0e0;
-        
     }
     a:hover{
         color: #0F5259;
     }
-
 }
 // scss för signup/login
-
 .signupContainer {
     display: flex;
-    // justify-content: center;
     flex-wrap: wrap;
     justify-content: space-evenly;
 
@@ -337,8 +316,6 @@ $break-large: 1200px;
 } 
 .loginContainer {
     display: flex;
-    // justify-content: center;
-    // flex-wrap: wrap;
     justify-content: space-evenly;
 
     margin: 0 15px;
@@ -361,7 +338,6 @@ $break-large: 1200px;
     justify-content: center;
     margin: 1fr;
     width: 48%;
-    // display: block;
 }
 .signupSubmit{
     display:flex;
@@ -386,23 +362,14 @@ $break-large: 1200px;
     border-radius: 6px;
     transition-duration: 0.4s;
 }
-
-// box-sizing: border-box;
-// background: #0F5259;
-// border-radius: 6px;
-// margin-top: 5px;
-// font-size: 1.2em;
 .checkout{
     display: flex;
     justify-content: flex-end;
     margin: 0 15px 15px 0;
     font-size: 2em;
 }
-
 //* scss för tablet
 @media screen and (min-width: $break-medium) {
-
-
     .sortContainer {
         display: flex;
         font-size: 1.2em;
@@ -411,7 +378,6 @@ $break-large: 1200px;
             margin-left: auto;
             display: flex;
         }
-
         .sort {
             justify-content: flex-end;
             margin-left: 10px;
@@ -420,7 +386,6 @@ $break-large: 1200px;
             text-align: right;
         }
     }
-
     .container {
         display: grid;
         grid-template-columns: repeat(2,1fr);   
@@ -459,23 +424,12 @@ $break-large: 1200px;
                     grid-row: 2 / 3;
                     margin: auto;
                 }
-                
-                
             }
         }
     }
 }
-// @media screen and (min-width: $break-small) {
-//     .row{
-//     display: flex;
-//     flex-wrap: wrap;
-//     }
-
-
-// }
 //* scss för desktop
 @media screen and (min-width: $break-large) {
-
     .sortContainer{
         display: flex;
         font-size: 1.2em;
@@ -494,7 +448,6 @@ $break-large: 1200px;
     .container {
         grid-template-columns: repeat(3,1fr);
     }
-    
 // Large checkout
     .formContainer{
         display: flex;
@@ -527,16 +480,13 @@ $break-large: 1200px;
                 .removeItem{
                     grid-column: 4 / 5;
                     grid-row: 2 / 3;
-                    margin: auto;
-                    
+                    margin: auto;      
             }
             }
             }
     }
 }   
-
 //CSS for user profile
-
 .userContainer {
     display: flex;
     flex-wrap: wrap;
