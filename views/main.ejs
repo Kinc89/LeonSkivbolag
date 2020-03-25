@@ -27,6 +27,9 @@
                 <form action="/addtocart/<%= album._id %>" method="get">
                     <button type="submit"><%= album.price %> SEK</button>
                 </form>
+                <div class="removeItem">
+                    <a style="color: aliceblue" href="/removeitem/<%= album._id %>">delete</a>
+                </div>
             </div>
         </div>
         <% }) %>

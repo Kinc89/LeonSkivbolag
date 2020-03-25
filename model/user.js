@@ -13,7 +13,7 @@ const userSchema = new Schema({
         price: { type: mongoose.Schema.Types.Number, ref: 'Album' },
         imgUrl: { type: mongoose.Schema.Types.String, ref: 'Album' }        
     }],
-    order: [] // not ready yet
+    order: []// not ready yet
 })
 
 userSchema.methods.addToCart = function (item) {
@@ -31,6 +31,12 @@ userSchema.methods.removeFromCart = function (itemId) {
     this.cart.id({ _id: itemId }).remove();
     return this.save();
 }
+
+userSchema.methods.removeAlbum = function (itemId) {
+    this.item.id({ _id: itemId }).remove();
+    return this.save();
+}
+
 
 const User = mongoose.model("User", userSchema);
 
