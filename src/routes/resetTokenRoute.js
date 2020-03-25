@@ -18,24 +18,18 @@ app.get(ROUTE.resetToken, async (req, res) => {
 
 app.post(ROUTE.resetToken, async (req, res) => {
 
-    console.log(req.body)
-
     const user = await User.findOne({ _id: req.body.userId })
 
-    console.log("user in resetToken POST:", user)
-
-    // problem here
-    user.password = await bcrypt.hash(req.body.password, 10);
-
-     // reset these two
+    const salt = await bcrypt.genSalt(10);
+    const hashPassword = await bcrypt.hash(req.body.password, salt);
+    
+    user.password = hashPassword;
     user.resetToken = undefined;
     user.expirationToken = undefined;
 
-    console.log("user in resetToken POST after:", user)
-
     await user.save();
 
-    res.redirect(ROUTE.login);
+    res.redirect(ROUTE.resetSuccess);
 
 });
 

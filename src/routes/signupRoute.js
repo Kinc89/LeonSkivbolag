@@ -51,7 +51,7 @@ app.post(ROUTE.signup, verifyToken, async (req, res) => {
         let status;
         const adminUsers = ["julia", "balthazar", "leon", "yamandu", "oskar"];
         if (adminUsers.includes(req.body.username)) {
-        status = "admin";
+            status = "admin";
         }
 
         // Create an user or admin user in the DB
