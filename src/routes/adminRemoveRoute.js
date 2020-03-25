@@ -10,17 +10,16 @@ const jwt = require("jsonwebtoken");
 const verifyToken = require("../middlewares/verifyToken");
 const checkUser = require("../middlewares/checkUser");
 
-app.get(ROUTE.removeItem, verifyToken, checkUser, async (req, res) => {
+app.get(ROUTE.removeAlbum, verifyToken, checkUser, async (req, res) => {
         
-        const user = await User.findById({ _id: req.validCookie.user._id });
+        const album = await Album.findOne( { _id: req.params.id });
 
-        await user.removeFromCart(req.params.id);
+        await album.removeItem(req.params.id);
 
-        // user.cart.id({ _id: req.params.id }).remove();
-        // await user.save();
+        album.id({ _id: req.params.id }).remove();
+        await album.save();
 
-        res.redirect(ROUTE.cart);
-        
+        res.render(ROUTE.root);
 
 });
 

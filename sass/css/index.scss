@@ -320,6 +320,10 @@ $break-large: 1200px;
     display: flex;
     justify-content: center;
     width: 100%;
+    a {
+        color: lightgoldenrodyellow;
+        padding: 10px;
+    }
 }
 .confirmBtn{
     display:flex;
