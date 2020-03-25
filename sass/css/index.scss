@@ -534,3 +534,15 @@ $break-large: 1200px;
             }
     }
 }   
+
+//CSS for user profile
+
+.userContainer {
+    display: flex;
+    flex-wrap: wrap;
+}
+.userControl {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}

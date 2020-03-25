@@ -3,13 +3,18 @@
 <body>
     <%- include('partials/header.ejs') %>
 
-    <h1>skivbolaget: userprofile</h1>
-
-    <p>Welcome <%= user.username %>, you have <%= user.cart.length %> items in <a href="/cart" style="color:white">your
-            cart</a>.</p>
-
-    <p><a href="/logout" style="color: lightcoral">Log out</a></p>
-
+    <h1 class="formH">User Profile</h1>
+    <div class="userContainer">
+        <div class="userControl">
+            <p>Welcome <%= user.username %></p>
+        </div>
+        <div class="userControl">
+            <p>You have <%= user.cart.length %> items in <a href="/cart" style="color:white">your cart</a>.</p>
+        </div>
+        <div class="userControl">
+            <p><a href="/logout" style="color: lightcoral">Log out</a></p>
+        </div>
+    </div>
 
 
 </body>
