@@ -51,7 +51,7 @@ $break-large: 1200px;
     
       .overlay-text {
         color: white;
-        font-size: 1em;
+        font-size: 0.7em;
         margin: auto;
         position: absolute;
         width: 80%;
@@ -106,6 +106,12 @@ $break-large: 1200px;
           }
     }
 //* scss för checkout 
+.checkout{
+    display: flex;
+    justify-content: flex-end;
+    margin: 0 15px 15px 0;
+    font-size: 2em;
+}
 .checkoutContainer{
     display:flex;
     flex-wrap: wrap;
@@ -362,12 +368,7 @@ $break-large: 1200px;
     border-radius: 6px;
     transition-duration: 0.4s;
 }
-.checkout{
-    display: flex;
-    justify-content: flex-end;
-    margin: 0 15px 15px 0;
-    font-size: 2em;
-}
+
 //* scss för tablet
 @media screen and (min-width: $break-medium) {
     .sortContainer {
