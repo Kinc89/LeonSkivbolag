@@ -32,7 +32,7 @@ app.get(ROUTE.signup, verifyToken, (req, res) => {
     if (req.validCookie.user.status == "admin") return res.redirect(ROUTE.admin);
 
 });
-
+ 
 app.post(ROUTE.signup, verifyToken, async (req, res) => {
     
     if (!req.validCookie) {
