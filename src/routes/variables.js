@@ -12,7 +12,11 @@ const ROUTE = {
     confirmation: '/confirmation',
     logout: '/logout',
     error403: '/error403',
-    removeItem: '/removeitem/:id'
+    removeItem: '/removeitem/:id',
+    reset: '/reset',
+    resetToken: '/reset/:token',
+    resetSuccess: '/resetsuccess',
+    removeAdminAlbum: '/removeadminalbum/:id',
 };
 
 // view variables
@@ -28,6 +32,8 @@ const VIEW = {
     confirmation: 'confirmation',
     logout: 'logout',
     error403: 'error-403',
+    reset: 'reset',
+    resetToken: 'reset-token'
 };
 
 module.exports = { ROUTE, VIEW };

@@ -3,10 +3,30 @@
 <body>
     <%- include('partials/header.ejs') %>
 
-    <h1 class="formH">Checkout page</h1>
+    <h1 class="formHeadline">Checkout page</h1>
     <br />
-    <!-- here will be user cart -->
-    <p class="formH"><%= user %></p>
+
+
+    <% if (user.status == "user") { %>
+
+    <p class="formH">Hello <%= user.username %>, this is the content of your cart:</p>
+        <div class="checkoutContainer">
+            <% user.cart.forEach(album=> { %>
+                <div class="yourCart">
+                    <div class="item">
+                        <div class="image checkoutImg">
+                            <img src="<%= album.imgUrl %>" alt="Image of '<%= album.name %>' by <%= album.artist %>" />
+                        </div>
+                        <i><%= album.name %></i><br>
+                        <b><%= album.artist %></b><br>
+                        <b><%= album.price %> SEK</b><br>
+                    </div>
+                    <br />
+                </div>
+            <% }); %>
+        </div>
+    <% } %>
+    <h3 class="formH">Total Sum: <%= totalPrice %> SEK</h3>
 
     <!-- input form for user info -->
     <!-- payment methods -->

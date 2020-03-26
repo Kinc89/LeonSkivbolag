@@ -20,7 +20,7 @@ header {
     #logo-container {
         height:80%;
         vertical-align: middle;
-        img{
+        img {
             height:100%;
         }
         #logo-small {
@@ -52,30 +52,14 @@ header {
     }
 }
 @media screen and (min-width: $break-large) {
-
     header {
         height: 85px;
         grid-template-rows: 100%;
         #logo-container {
-            height: 70%;
-            max-width: 60%;
-            margin: auto;
-        }
-        #logo-small {
-            padding-top: 2%;
-            max-width: 60%;
-        }
-        .header-icon {
-            font-size: 1.5vw;
-        }
-    }
-
-    index
-    header {
-        height: 60px;
-        grid-template-rows: 100%;
-        #logo-container {
-            height: 70%;
+            max-width: 490px;
+            #logo-small {
+                margin: 10px 0px;
+            }
         }
         .header-icon {
             font-size: 1.5vw;
