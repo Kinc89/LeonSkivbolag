@@ -11,12 +11,6 @@ const albumSchema = new Schema({
     numListeners: { type: Number }
 })
 
-// for admin user to remove an album from the Album collection.
-// albumSchema.methods.removeAlbum = function (itemId) {
-//     this.findByIdAndRemove({ _id: itemId });
-//     return this.save();
-// }
-
 const Album = mongoose.model('Album', albumSchema);
 
 module.exports = Album;
