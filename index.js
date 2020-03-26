@@ -65,7 +65,7 @@ app.use(resetSuccessRoute);
 app.use(removeAdminAlbumRoute);
 
 // Start servern
-const dbOptions = { useUnifiedTopology: true, useNewUrlParser: true, useCreateIndex: true };
+const dbOptions = { useUnifiedTopology: true, useNewUrlParser: true, useCreateIndex: true, useFindAndModify: false };
 mongoose.connect(dbConfig.databaseURL, dbOptions).then(() => {
     app.listen(port, () => console.log(`App listening on port ${port}! http://localhost:4000`))
 });

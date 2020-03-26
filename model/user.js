@@ -49,7 +49,7 @@ userSchema.methods.addAdminAlbums = function (item) {
     return this.save();
 }
 
-// for admin user to remove an album from their collection ("adminAlbums" property)
+// for admin user to remove an album from their "adminAlbums" property
 userSchema.methods.removeFromAdminAlbums = function (itemId) {
     this.adminAlbums.id({ _id: itemId }).remove();
     return this.save();

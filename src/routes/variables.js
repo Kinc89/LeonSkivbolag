@@ -16,7 +16,7 @@ const ROUTE = {
     reset: '/reset',
     resetToken: '/reset/:token',
     resetSuccess: '/resetsuccess',
-    removeAdminAlbum: '/removeadminalbum/:id',
+    removeAdminAlbum: '/removeadminalbum/:id/:itemid',
 };
 
 // view variables
