@@ -11,14 +11,6 @@ context("Admin page", () => {
         cy.get('#password').type('1234').should('have.value', '1234');
         cy.get('#post-login-form').submit();
 
-        // cy.contains("Archived Todos").click();
-        // cy.url().should("include", "/archive");
-        // cy.contains("Deleted Todos").click();
-        // cy.url().should("include", "/deletetodo");
-        // cy.contains("About").click();
-        // cy.url().should("include", "/about");
-        // cy.contains("Home").click();
-
     });
 
 });

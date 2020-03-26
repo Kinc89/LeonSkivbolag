@@ -11,7 +11,6 @@ context("Admin page", () => {
 
     it("Add 30 albums and go to root location", () => {
         
-        // 1
         cy.get('#urlLastFm').type('https://www.last.fm/music/Madonna/The+Immaculate+Collection').should('have.value', 'https://www.last.fm/music/Madonna/The+Immaculate+Collection');
         cy.get('#post-album-form').submit();
         
