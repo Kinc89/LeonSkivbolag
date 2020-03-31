@@ -8,6 +8,8 @@ const app = express();
 const dbConfig = require('./config/config');
 const port = process.env.PORT || 4000;
 
+const dotenv = require('dotenv')
+
 // cookie-parser for loginRoute
 const cookieParser = require("cookie-parser");
 
